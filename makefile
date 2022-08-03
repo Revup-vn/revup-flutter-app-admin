@@ -20,9 +20,9 @@ run_unit: ## Runs unit tests
 
 
 analyze:
-	@flutter pub run dart_code_metrics:metrics analyze lib
-	@flutter pub run dart_code_metrics:metrics check-unused-files lib
-	@flutter pub run dart_code_metrics:metrics check-unused-code lib
+	@flutter pub run dart_code_metrics:metrics analyze lib --exclude='{lib/router/app_router.dart,lib/configs/firebase_options.dart}'
+	@flutter pub run dart_code_metrics:metrics check-unused-files lib --exclude='{lib/router/app_router.dart,lib/configs/firebase_options.dart}'
+	@flutter pub run dart_code_metrics:metrics check-unused-code lib  --exclude='{lib/router/app_router.dart,lib/configs/firebase_options.dart}'
 	@flutter analyze lib test
 
 coverage:  ##run test and gen coverage report
