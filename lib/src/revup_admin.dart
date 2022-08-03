@@ -1,3 +1,0 @@
-class RevupAdmin {
-  const RevupAdmin();
-}

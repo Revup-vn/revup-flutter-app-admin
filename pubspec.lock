@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.1"
+  auto_route_generator:
+    dependency: "direct dev"
+    description:
+      name: auto_route_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
   bloc:
     dependency: transitive
     description:
@@ -294,7 +301,7 @@ packages:
       name: dbus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.7"
+    version: "0.7.4"
   dependency_validator:
     dependency: "direct dev"
     description:
@@ -322,7 +329,7 @@ packages:
       name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "1.2.1"
   file:
     dependency: transitive
     description:
@@ -422,26 +429,12 @@ packages:
     source: hosted
     version: "1.0.1"
   flash:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flash
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3+3"
-  fluent_ui:
-    dependency: "direct main"
-    description:
-      name: fluent_ui
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.12.0"
-  fluentui_system_icons:
-    dependency: "direct main"
-    description:
-      name: fluentui_system_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.177"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -461,13 +454,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.5.0"
-  flutter_form_field_validator:
-    dependency: "direct main"
-    description:
-      name: flutter_form_field_validator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   flutter_localizations:
     dependency: transitive
     description: flutter
@@ -483,6 +469,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  form_builder_validators:
+    dependency: "direct main"
+    description:
+      name: form_builder_validators
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.3.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -603,7 +596,7 @@ packages:
     source: hosted
     version: "4.0.1"
   hydrated_bloc:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: hydrated_bloc
       url: "https://pub.dartlang.org"
@@ -762,7 +755,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.0.7"
   petitparser:
     dependency: transitive
     description:
@@ -826,22 +819,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
-  recase:
-    dependency: transitive
-    description:
-      name: recase
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.0"
   revup_core:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "6a4fa76f58c5d92764ca75d5156e66acd8364eee"
-      url: "https://github.com/Revup-vn/revup-core.git"
-    source: git
-    version: "3.1.0-dev"
+      path: "packages/injected/revup-dev"
+      relative: true
+    source: path
+    version: "3.4.1-dev"
   rxdart:
     dependency: transitive
     description:
@@ -849,13 +833,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.5"
-  scroll_pos:
-    dependency: transitive
-    description:
-      name: scroll_pos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
   shelf:
     dependency: transitive
     description:
@@ -1014,7 +991,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.7.0"
+    version: "2.6.1"
   xdg_directories:
     dependency: transitive
     description:
