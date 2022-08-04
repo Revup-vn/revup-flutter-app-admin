@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -6,6 +8,7 @@ import 'package:flash/flash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:revup_core/core.dart';
 
 import '../../router/router.dart';
 import '../../shared/shared.dart';
@@ -23,9 +26,28 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final color = Theme.of(context).secondaryHeaderColor;
+    final color = Theme.of(context).colorScheme.primaryContainer;
     final txtTheme = Theme.of(context).textTheme;
     final loginCubit = context.read<LoginCubit>();
+    log(context.read<AuthenticateBloc>().state.toString());
+    void onFieldSubmit() {
+      if (formKey.currentState?.saveAndValidate() ?? false) {
+        catching(
+          () => LoginAccount.fromJson(
+            formKey.currentState?.value ?? <String, dynamic>{},
+          ),
+        ).toOption().fold(
+              () => context.showErrorBar<void>(
+                content: Text(
+                  'Invalid data Login',
+                  style: txtTheme.bodyMedium,
+                ),
+              ),
+              (a) => loginCubit.signIn(account: a),
+            );
+      }
+    }
+
     return Scaffold(
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
@@ -103,6 +125,7 @@ class LoginView extends StatelessWidget {
                       children: [
                         FormBuilderTextField(
                           name: 'email',
+                          onSubmitted: (_) => onFieldSubmit(),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(),
                             FormBuilderValidators.email(),
@@ -115,11 +138,18 @@ class LoginView extends StatelessWidget {
                         ),
                         FormBuilderTextField(
                           name: 'password',
+                          onSubmitted: (_) => onFieldSubmit(),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(),
-                            FormBuilderValidators.minLength(6,
-                                errorText:
-                                    'Please enter a more stronger password'),
+                            (val) => val == null ||
+                                    RegExp(
+                                          '^(?=.*[a-z])'
+                                          '(?=.*[A-Z])'
+                                          r'(?=.*[!@#\$%\^&\*]).{6,}$',
+                                        ).stringMatch(val)?.length !=
+                                        val.length
+                                ? 'Please give a more stronger password'
+                                : null,
                           ]),
                           decoration: InputDecoration(
                             border: const OutlineInputBorder(),
@@ -127,12 +157,14 @@ class LoginView extends StatelessWidget {
                             prefixIcon: const Icon(Icons.password),
                             suffixIcon: IconButton(
                               onPressed: loginCubit.toggle,
-                              icon: Icon(state.maybeWhen(
-                                orElse: () => Icons.visibility_off,
-                                empty: (val) => val
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              )),
+                              icon: Icon(
+                                state.maybeWhen(
+                                  orElse: () => Icons.visibility_off,
+                                  empty: (val) => val
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                              ),
                             ),
                           ),
                           obscureText: state.maybeWhen(
@@ -141,27 +173,7 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () {
-                            if (formKey.currentState?.saveAndValidate() ??
-                                false) {
-                              catching(
-                                () => LoginAccount.fromJson(
-                                  formKey.currentState?.value ??
-                                      <String, dynamic>{},
-                                ),
-                              ).toOption().fold(
-                                    () => context.showErrorBar<void>(
-                                      content: Text(
-                                        'Invalid data Login',
-                                        style: txtTheme.bodyMedium,
-                                      ),
-                                    ),
-                                    (a) => loginCubit.signIn(account: a),
-                                  );
-                            } else {
-                              context.showErrorBar<void>(content: Text('data'));
-                            }
-                          },
+                          onPressed: onFieldSubmit,
                           child: Text(
                             'Login with email',
                             style: txtTheme.bodyText1,
@@ -197,7 +209,7 @@ class LoginView extends StatelessWidget {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           );

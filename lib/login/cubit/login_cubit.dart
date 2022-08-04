@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,6 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
               obscureText: !val,
             ),
           );
+
           return unit;
         },
         orElse: () => unit,
@@ -75,11 +77,23 @@ class LoginCubit extends Cubit<LoginState> {
     final _tmp = _authenticateBloc.stream.listen(
       (event) {
         map(event);
+        log('BEF');
+        log(event.toString());
+
+        event.maybeMap(
+          orElse: () => unit,
+          failure: (_) =>
+              _authenticateBloc.add(const AuthenticateEvent.reset()),
+        );
+        log('AF');
+        log(_authenticateBloc.state.toString());
+
         isDone.complete(unit);
       },
     );
     await isDone.future;
     await _tmp.cancel();
+
     return unit;
   }
 
@@ -93,6 +107,7 @@ class LoginCubit extends Cubit<LoginState> {
       ),
     );
     // only emit Authenticated or failure
+
     return _listenOnce(
       isDoneLogin,
       (event) => event.maybeWhen(
