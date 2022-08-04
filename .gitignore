@@ -37,3 +37,10 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+
+packages/injected/**
+
+lib/configs/firebase_options.dart
+
+desiredFileName.txt
