@@ -1,6 +1,6 @@
 name: revup_admin
 description: A Very Good App
-version: 0.0.1
+version: 0.1.1
 publish_to: none
 
 environment:
@@ -21,10 +21,10 @@ dependencies:
   intl: ^0.17.0
   json_annotation: ^4.6.0
   revup_core:
-    path: packages/injected/revup-dev
-    # git:
-    #   url: https://github.com/Revup-vn/revup-core.git
-    #   ref: main
+    git:
+      url: https://github.com/Revup-vn/revup-core.git
+      ref: feature/admin-migration
+      version: ^3.4.2-dev
 
 dev_dependencies:
   auto_route_generator: ^4.2.0

@@ -825,7 +825,7 @@ packages:
       path: "packages/injected/revup-dev"
       relative: true
     source: path
-    version: "3.4.1-dev"
+    version: "3.4.2-dev"
   rxdart:
     dependency: transitive
     description:
