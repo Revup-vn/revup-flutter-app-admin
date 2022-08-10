@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../widgets.dart';
+
 class AvatarFailure extends StatelessWidget {
   const AvatarFailure({super.key});
 
   @override
   Widget build(BuildContext context) => CircleAvatar(
-        maxRadius: 50,
-        minRadius: 30,
+        maxRadius: kAvatarMaxRadius,
+        minRadius: kAvatarMinRadius,
         backgroundColor: Theme.of(context).errorColor,
         child: Text(
           '!',

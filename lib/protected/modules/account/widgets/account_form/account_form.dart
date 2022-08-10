@@ -1,5 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+
+import 'package:dartz/dartz.dart';
 
 import 'double_field_tile.dart';
 

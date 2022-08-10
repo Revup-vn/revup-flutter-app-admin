@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets.dart';
+
 class AvatarFallback extends StatelessWidget {
   const AvatarFallback({super.key, required this.name});
 
@@ -7,8 +9,8 @@ class AvatarFallback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CircleAvatar(
-        maxRadius: 50,
-        minRadius: 30,
+        maxRadius: kAvatarMaxRadius,
+        minRadius: kAvatarMinRadius,
         backgroundColor: Theme.of(context).colorScheme.primary.withAlpha(70),
         child: Text(
           name[0].toUpperCase(),

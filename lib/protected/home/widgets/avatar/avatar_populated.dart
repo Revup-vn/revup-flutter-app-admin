@@ -1,6 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
+
+import '../widgets.dart';
 import 'avatar_failure.dart';
 import 'avatar_loading.dart';
 
@@ -14,8 +16,8 @@ class AvatarPopulated extends StatelessWidget {
         imageUrl: url,
         fit: BoxFit.cover,
         imageBuilder: (_, imageProvider) => CircleAvatar(
-          maxRadius: 50,
-          minRadius: 30,
+          maxRadius: kAvatarMaxRadius,
+          minRadius: kAvatarMinRadius,
           backgroundImage: imageProvider,
         ),
         errorWidget: (_, __, dynamic ___) => const AvatarFailure(),

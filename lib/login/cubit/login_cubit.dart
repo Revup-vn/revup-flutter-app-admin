@@ -58,8 +58,8 @@ class LoginCubit extends Cubit<LoginState> {
       isDoneLogin,
       (event) async => event.maybeWhen(
         signUpSuccess: () => emit(const LoginState.success()),
-        failure: (code, failure) =>
-            emit(LoginState.error(errorMessage: code ?? failure.toString())),
+        failure: (failure) =>
+            emit(LoginState.error(errorMessage: failure.toString())),
         orElse: () => emit(
           const LoginState.error(
             errorMessage: 'Cannot happened',
@@ -107,8 +107,8 @@ class LoginCubit extends Cubit<LoginState> {
       isDoneLogin,
       (event) => event.maybeWhen(
         authenticated: (type) => emit(const LoginState.success()),
-        failure: (code, failure) =>
-            emit(LoginState.error(errorMessage: code ?? failure.toString())),
+        failure: (failure) =>
+            emit(LoginState.error(errorMessage: failure.toString())),
         orElse: () => emit(
           const LoginState.error(
             errorMessage: 'Cannot happened',

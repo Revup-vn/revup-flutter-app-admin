@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 
 import '../../../router/router.dart';
-import '../../modules/settings/view/view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -48,21 +47,26 @@ class HomeView extends StatelessWidget {
                 ),
                 const VerticalDivider(width: 1, thickness: 1),
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(30, 10, 10, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
                           _tabRouter.currentPath.split('/').last.toUpperCase(),
                           style:
                               Theme.of(context).textTheme.headline3?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
-                        child,
-                      ],
-                    ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: child,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

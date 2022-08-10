@@ -11,13 +11,15 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
+
 import 'package:flutter/material.dart' as _i8;
+
+import 'package:auto_route/auto_route.dart' as _i7;
 
 import '../init/init.dart' as _i2;
 import '../login/view/login_page.dart' as _i1;
 import '../protected/modules/account/account.dart' as _i4;
-import '../protected/modules/report/view/view.dart' as _i5;
+import '../protected/modules/report/view/report_page.dart' as _i5;
 import '../protected/modules/settings/view/view.dart' as _i6;
 import '../protected/protected.dart' as _i3;
 import 'auth_router.dart' as _i9;
