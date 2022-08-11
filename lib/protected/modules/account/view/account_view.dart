@@ -17,6 +17,7 @@ class AccountView extends StatelessWidget {
           orElse: () => throw NullThrownError(),
           authenticated: (value) => value.authType.user,
         );
+
     return ListView.separated(
       padding: const EdgeInsets.all(30),
       shrinkWrap: true,
@@ -36,7 +37,7 @@ class AccountView extends StatelessWidget {
             return AccountForm(
               valueForFields: [
                 tuple2(user.firstName, user.lastName),
-                tuple2(user.email, user.phone)
+                tuple2(user.email, user.phone),
               ],
             );
           case 2:

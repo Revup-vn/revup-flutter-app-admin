@@ -11,7 +11,7 @@ class AccountForm extends StatelessWidget {
 
   static final fields = [
     tuple2('First Name', 'Last Name'),
-    tuple2('Email', 'Phone Number')
+    tuple2('Email', 'Phone Number'),
   ];
 
   @override

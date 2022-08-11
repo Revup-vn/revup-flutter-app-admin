@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:revup_core/core.dart';
 
-import '../../../home/widgets/widgets.dart';
-import '../models/models.dart';
+import '../../../../home/widgets/widgets.dart';
+import '../../models/models.dart';
 
 class ReportCardPopulated extends StatelessWidget {
   ReportCardPopulated({
     super.key,
     required Report data,
-    required this.i,
     this.onTap,
+    required this.status,
   })  : user = data.cName,
         avatarUrl = data.cAvatar,
         desc = data.report.desc,
@@ -20,7 +20,7 @@ class ReportCardPopulated extends StatelessWidget {
   final String avatarUrl;
   final String desc;
   final DateTime createdDate;
-  final int i;
+  final String status;
   final VoidCallback? onTap;
   static const double size = 100;
 
@@ -59,7 +59,7 @@ class ReportCardPopulated extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.bottomRight,
                           child: Text(
-                            context.formatDate(createdDate),
+                            '$status || ${context.formatDate(createdDate)}',
                             style: Theme.of(context).textTheme.caption,
                           ),
                         ),

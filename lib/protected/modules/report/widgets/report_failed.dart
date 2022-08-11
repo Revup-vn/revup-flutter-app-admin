@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ReportFailed extends StatelessWidget {
-  const ReportFailed({super.key});
+  const ReportFailed({super.key, required this.onRetry});
+  final VoidCallback onRetry;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -21,12 +22,12 @@ class ReportFailed extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(30),
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: onRetry,
               child: const Text(
                 'Try again',
               ),
             ),
-          )
+          ),
         ],
       );
 }

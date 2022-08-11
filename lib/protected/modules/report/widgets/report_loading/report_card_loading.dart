@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../home/widgets/widgets.dart';
+import '../../../../home/widgets/widgets.dart';
 
 class ReportCardLoading extends StatelessWidget {
   const ReportCardLoading({

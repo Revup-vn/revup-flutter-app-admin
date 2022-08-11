@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
 
-import '../../../shared/shared.dart';
+import '../../../../shared/shared.dart';
 import 'report_card_loading.dart';
 
 class ReportLoading extends StatelessWidget {

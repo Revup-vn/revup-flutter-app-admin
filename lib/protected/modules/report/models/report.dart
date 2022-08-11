@@ -13,7 +13,7 @@ class Report with _$Report {
     required String pName,
     required String pAddress,
     required int amount,
-    required Feedback feedback,
+    required ReportFeedback feedback,
   }) = _Report;
 
   factory Report.fromDto(

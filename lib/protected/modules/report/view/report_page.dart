@@ -13,7 +13,7 @@ class ReportPage extends StatelessWidget {
         create: (context) => ReportCubit(
           context.read(),
           context.read(),
-        ),
+        )..watch(),
         child: const ReportView(),
       );
 }

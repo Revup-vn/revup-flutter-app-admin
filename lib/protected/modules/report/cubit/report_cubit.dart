@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -27,6 +26,7 @@ class ReportCubit extends Cubit<ReportState> {
         .collection()
         .where('type', isEqualTo: 6)
         .where('report', isNull: false)
+        .orderBy('report')
         .orderBy('report.created', descending: true)
         .snapshots()
         .listen(
@@ -34,14 +34,12 @@ class ReportCubit extends Cubit<ReportState> {
           onError: _mapErrorToStates,
           cancelOnError: true,
         );
+
     return unit;
   }
 
-  void _mapErrorToStates(Object? _) => emit(
-        const ReportState.failed(
-          'Cannot get the data',
-        ),
-      );
+  void _mapErrorToStates(Object? _) =>
+      emit(const ReportState.failed('Cannot get the data'));
 
   Future<void> _mapDataToStates(QuerySnapshot<Map<String, dynamic>> e) async {
     if (e.size == 0) {
@@ -95,6 +93,7 @@ class ReportCubit extends Cubit<ReportState> {
   @override
   Future<void> close() async {
     await _s?.cancel();
+
     return super.close();
   }
 }

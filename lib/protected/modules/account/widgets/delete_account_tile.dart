@@ -21,7 +21,7 @@ class DeleteAccountTile extends StatelessWidget {
                     color: Colors.grey.shade700,
                   ),
             ),
-          )
+          ),
         ],
       );
 }

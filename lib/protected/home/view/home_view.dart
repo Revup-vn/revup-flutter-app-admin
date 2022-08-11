@@ -16,6 +16,7 @@ class HomeView extends StatelessWidget {
         ],
         builder: (context, child, animation) {
           final _tabRouter = AutoTabsRouter.of(context);
+
           return Scaffold(
             body: Row(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -27,27 +27,7 @@ class LoginView extends StatelessWidget {
 
     return Scaffold(
       body: BlocListener<LoginCubit, LoginState>(
-        listener: (context, state) {
-          state.when(
-            empty: (_) => unit,
-            loading: (isDone) =>
-                context.showBlockDialog<void>(dismissCompleter: isDone),
-            error: (str) => context.showErrorBar<void>(
-              content: Text(
-                'Error: $str',
-                style: txtTheme.bodyMedium,
-              ),
-            ),
-            success: () => context
-                .showSuccessBar<void>(
-                  content: Text(
-                    'Verification Complete!',
-                    style: txtTheme.bodyMedium,
-                  ),
-                )
-                .then((_) => context.router.push(const HomeRoute())),
-          );
-        },
+        listener: _onStateChanges,
         child: Container(
           decoration: appDecoration(color),
           padding: EdgeInsets.fromLTRB(
@@ -90,4 +70,29 @@ class LoginView extends StatelessWidget {
       ),
     );
   }
+
+  void _onStateChanges(BuildContext context, LoginState state) => state.when(
+        empty: (_) => unit,
+        loading: (isDone) =>
+            context.showBlockDialog<void>(dismissCompleter: isDone),
+        error: (str) => context.showErrorBar<void>(
+          content: Text(
+            'Error: $str',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
+        success: () => context
+            .showSuccessBar<void>(
+              content: Text(
+                'Verification Complete!',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            )
+            .then(
+              (_) => context.router.pushAndPopUntil(
+                const HomeRoute(),
+                predicate: (_) => true,
+              ),
+            ),
+      );
 }
