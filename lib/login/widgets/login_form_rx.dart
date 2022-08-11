@@ -23,8 +23,8 @@ class LoginFormRx extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginCubit = context.read<LoginCubit>();
-    final state = context.watch<LoginState>();
+    final loginCubit = context.watch<LoginCubit>();
+    final state = loginCubit.state;
 
     void onFieldSubmit() {
       if (formKey.currentState?.saveAndValidate() ?? false) {
