@@ -44,3 +44,4 @@ packages/injected/**
 lib/configs/firebase_options.dart
 
 desiredFileName.txt
+coverage

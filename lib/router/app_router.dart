@@ -1,10 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 
 import '../init/init.dart';
-import '../login/view/login_page.dart';
-import '../protected/modules/account/account.dart';
-import '../protected/modules/report/view/view.dart';
-import '../protected/modules/settings/view/view.dart';
+import '../login/login.dart';
 import '../protected/protected.dart';
 import 'auth_router.dart';
 
@@ -33,6 +30,12 @@ import 'auth_router.dart';
         AutoRoute<void>(
           page: ReportPage,
           path: 'reports',
+          children: [
+            AutoRoute<void>(
+              page: ReportDetailPage,
+              path: 'detail',
+            ),
+          ],
         ),
         AutoRoute<void>(
           page: SettingsPage,

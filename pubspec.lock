@@ -63,7 +63,7 @@ packages:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.0.3"
+    version: "8.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -148,6 +148,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  carousel_slider:
+    dependency: "direct main"
+    description:
+      name: carousel_slider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.1"
   characters:
     dependency: transitive
     description:
@@ -330,13 +337,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.2"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -359,7 +359,7 @@ packages:
     source: hosted
     version: "6.1.2"
   firebase_auth:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_auth
       url: "https://pub.dartlang.org"
@@ -495,7 +495,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_test:
-    dependency: transitive
+    dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -532,13 +532,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-  geoflutterfire2:
-    dependency: transitive
-    description:
-      name: geoflutterfire2
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.3.12"
   glob:
     dependency: transitive
     description:
@@ -636,7 +629,7 @@ packages:
       name: hydrated_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.0.0-dev.2"
+    version: "9.0.0-dev.3"
   import_sorter:
     dependency: "direct dev"
     description:
@@ -872,11 +865,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/admin-migration"
-      resolved-ref: c5c47e86ae3a1300d08ca2afd23252fdbf47d51c
+      ref: main
+      resolved-ref: "64d63e844ab031b09e4b30d95a0289e3e46dcffe"
       url: "https://github.com/Revup-vn/revup-core.git"
     source: git
-    version: "3.4.1-dev"
+    version: "6.0.0-dev"
   rxdart:
     dependency: transitive
     description:

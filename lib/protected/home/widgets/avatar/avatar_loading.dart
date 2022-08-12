@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:shimmer/shimmer.dart';
+
+import '../../../shared/shared.dart';
+import '../widgets.dart';
 
 class AvatarLoading extends StatelessWidget {
   const AvatarLoading({super.key});
@@ -7,11 +11,11 @@ class AvatarLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Theme.of(context).colorScheme.secondary.withAlpha(50),
-      highlightColor: Theme.of(context).colorScheme.secondary.withAlpha(20),
+      baseColor: context.shimmerBase,
+      highlightColor: context.shimmerHightLight,
       child: const CircleAvatar(
-        maxRadius: 50,
-        minRadius: 30,
+        maxRadius: kAvatarMaxRadius,
+        minRadius: kAvatarMinRadius,
       ),
     );
   }
