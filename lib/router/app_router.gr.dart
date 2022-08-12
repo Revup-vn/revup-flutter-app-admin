@@ -12,12 +12,13 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
+import 'package:flutter/cupertino.dart' as _i7;
 import 'package:flutter/material.dart' as _i5;
 
 import 'package:auto_route/auto_route.dart' as _i4;
 
 import '../init/init.dart' as _i2;
-import '../login/view/login_page.dart' as _i1;
+import '../login/login.dart' as _i1;
 import '../protected/protected.dart' as _i3;
 import 'auth_router.dart' as _i6;
 
@@ -143,7 +144,7 @@ class SettingsRoute extends _i4.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.ReportDetailPage]
 class ReportDetailRoute extends _i4.PageRouteInfo<ReportDetailRouteArgs> {
-  ReportDetailRoute({_i5.Key? key, required _i3.Report report})
+  ReportDetailRoute({_i7.Key? key, required _i3.Report report})
       : super(ReportDetailRoute.name,
             path: 'detail',
             args: ReportDetailRouteArgs(key: key, report: report));
@@ -154,7 +155,7 @@ class ReportDetailRoute extends _i4.PageRouteInfo<ReportDetailRouteArgs> {
 class ReportDetailRouteArgs {
   const ReportDetailRouteArgs({this.key, required this.report});
 
-  final _i5.Key? key;
+  final _i7.Key? key;
 
   final _i3.Report report;
 

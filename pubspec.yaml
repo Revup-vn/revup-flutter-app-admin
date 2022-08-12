@@ -1,6 +1,6 @@
 name: revup_admin
 description: A Very Good App
-version: 0.2.1
+version: 0.3.0
 publish_to: none
 
 environment:
@@ -11,25 +11,21 @@ dependencies:
   cached_network_image: ^3.2.1
   carousel_slider: ^4.1.1
   dartz: ^0.10.1
-  firebase_auth: ^3.6.2
   flash: ^2.0.3+3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_form_builder: ^7.3.1
-  flutter_image_slideshow: ^0.1.2
-  flutter_rating_bar: ^4.0.1
   form_builder_validators: ^8.3.0
   freezed_annotation: ^2.0.3
   hydrated_bloc: ^9.0.0-dev.2
   intl: ^0.17.0
   json_annotation: ^4.6.0
   revup_core:
-    # git:
-    #   url: https://github.com/Revup-vn/revup-core.git
-    #   ref: feature/admin-migration
-    #   version: ^3.4.2-dev
-    path: packages/injected/revup-dev
+    git:
+      url: https://github.com/Revup-vn/revup-core.git
+      ref: main
+      version: ^6.0.0-dev
   shimmer: ^2.0.0
 
 dev_dependencies:
@@ -38,6 +34,8 @@ dev_dependencies:
   dart_code_metrics: ^4.17.0
   dependency_validator: ^3.2.2
   freezed: ^2.1.0+1
+  flutter_test:
+    sdk: flutter
   import_sorter: ^4.6.0
   json_serializable: ^6.3.1
   very_good_analysis: ^3.0.1

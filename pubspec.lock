@@ -359,7 +359,7 @@ packages:
     source: hosted
     version: "6.1.2"
   firebase_auth:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_auth
       url: "https://pub.dartlang.org"
@@ -489,27 +489,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.5.0"
-  flutter_image_slideshow:
-    dependency: "direct main"
-    description:
-      name: flutter_image_slideshow
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.2"
   flutter_localizations:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_rating_bar:
-    dependency: "direct main"
-    description:
-      name: flutter_rating_bar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   flutter_test:
-    dependency: transitive
+    dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -878,9 +864,11 @@ packages:
   revup_core:
     dependency: "direct main"
     description:
-      path: "packages/injected/revup-dev"
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: "64d63e844ab031b09e4b30d95a0289e3e46dcffe"
+      url: "https://github.com/Revup-vn/revup-core.git"
+    source: git
     version: "6.0.0-dev"
   rxdart:
     dependency: transitive
