@@ -16,6 +16,7 @@ import 'auth_router.dart';
       page: InitPage,
       path: '/',
       initial: true,
+      maintainState: false,
     ),
     AutoRoute<void>(
       guards: [AuthGuard],

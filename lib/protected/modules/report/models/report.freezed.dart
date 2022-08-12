@@ -44,6 +44,7 @@ abstract class $ReportCopyWith<$Res> {
       ReportFeedback feedback});
 
   $RepairReportCopyWith<$Res> get report;
+  $ReportFeedbackCopyWith<$Res> get feedback;
 }
 
 /// @nodoc
@@ -107,6 +108,13 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
       return _then(_value.copyWith(report: value));
     });
   }
+
+  @override
+  $ReportFeedbackCopyWith<$Res> get feedback {
+    return $ReportFeedbackCopyWith<$Res>(_value.feedback, (value) {
+      return _then(_value.copyWith(feedback: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -126,6 +134,8 @@ abstract class _$$_ReportCopyWith<$Res> implements $ReportCopyWith<$Res> {
 
   @override
   $RepairReportCopyWith<$Res> get report;
+  @override
+  $ReportFeedbackCopyWith<$Res> get feedback;
 }
 
 /// @nodoc

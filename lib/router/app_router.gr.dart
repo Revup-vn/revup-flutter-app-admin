@@ -38,7 +38,9 @@ class AppRouter extends _i4.RootStackRouter {
     },
     InitRoute.name: (routeData) {
       return _i4.MaterialPageX<void>(
-          routeData: routeData, child: const _i2.InitPage());
+          routeData: routeData,
+          child: const _i2.InitPage(),
+          maintainState: false);
     },
     HomeRoute.name: (routeData) {
       return _i4.MaterialPageX<void>(
