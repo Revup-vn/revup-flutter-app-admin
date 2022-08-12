@@ -11,11 +11,9 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-
+import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/cupertino.dart' as _i7;
 import 'package:flutter/material.dart' as _i5;
-
-import 'package:auto_route/auto_route.dart' as _i4;
 
 import '../init/init.dart' as _i2;
 import '../login/login.dart' as _i1;
@@ -38,7 +36,9 @@ class AppRouter extends _i4.RootStackRouter {
     },
     InitRoute.name: (routeData) {
       return _i4.MaterialPageX<void>(
-          routeData: routeData, child: const _i2.InitPage());
+          routeData: routeData,
+          child: const _i2.InitPage(),
+          maintainState: false);
     },
     HomeRoute.name: (routeData) {
       return _i4.MaterialPageX<void>(

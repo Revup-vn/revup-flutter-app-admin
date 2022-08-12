@@ -30,13 +30,18 @@ class InitView extends StatelessWidget {
             child = const InitActive();
             break;
           case ConnectionState.done:
-            child = snapShot.hasError ? const InitError() : const InitSuccess();
-            if (!snapShot.hasError) {
-              Future<void>.delayed(
-                const Duration(milliseconds: 300),
-                () => context.router.push(const HomeRoute()),
-              );
-            }
+            child = snapShot.hasError
+                ? const InitError()
+                : InitSuccess(
+                    onSuccess: () => Future<void>.delayed(
+                      const Duration(milliseconds: 300),
+                      () => context.router.pushAndPopUntil(
+                        const HomeRoute(),
+                        predicate: (_) => true,
+                      ),
+                    ),
+                  );
+
             break;
         }
 
