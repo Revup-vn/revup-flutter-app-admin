@@ -7,6 +7,7 @@ class InitSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     onSuccess();
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

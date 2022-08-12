@@ -1,6 +1,6 @@
 name: revup_admin
 description: A Very Good App
-version: 0.3.0
+version: 1.0.0-pre
 publish_to: none
 
 environment:
