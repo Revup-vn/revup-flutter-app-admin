@@ -25,7 +25,7 @@ class VerificationIdImageDisplay extends StatelessWidget {
             child:
                 url.isNotEmpty ? ImagePopulated(url: url) : const ImageEmpty(),
           ),
-        )
+        ),
       ],
     );
   }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/verification_detail_cubit.dart';
 import '../../models/models.dart';
+import '../cubit/verification_detail_cubit.dart';
 import 'verification_detail_view.dart';
 
 class VerificationDetailPage extends StatelessWidget {

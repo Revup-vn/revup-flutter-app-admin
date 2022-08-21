@@ -1,5 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+
+import 'package:dartz/dartz.dart';
 
 import '../../../../shared/verification_button.dart';
 
