@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../home/widgets/widgets.dart';
+import '../avatar/avatar.dart';
 
-class ReportCardLoading extends StatelessWidget {
-  const ReportCardLoading({
+class CardLoading extends StatelessWidget {
+  const CardLoading({
     super.key,
   });
 

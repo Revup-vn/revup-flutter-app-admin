@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ReportImageError extends StatelessWidget {
-  const ReportImageError({
+class ImageError extends StatelessWidget {
+  const ImageError({
     super.key,
   });
 

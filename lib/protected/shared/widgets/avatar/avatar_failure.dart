@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets.dart';
+import 'avatar.dart';
 
 class AvatarFailure extends StatelessWidget {
   const AvatarFailure({super.key});

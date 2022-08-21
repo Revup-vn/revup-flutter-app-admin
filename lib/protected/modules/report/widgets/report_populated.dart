@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:dartz/dartz.dart';
 
-import '../../models/report.dart';
-import 'report_card_populated.dart';
+import '../../../shared/shared.dart';
+import '../models/models.dart';
 
 class ReportPopulated extends StatelessWidget {
   const ReportPopulated({
@@ -18,8 +18,11 @@ class ReportPopulated extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView.builder(
-        itemBuilder: (_, i) => ReportCardPopulated(
-          data: reports[i],
+        itemBuilder: (_, i) => CardPopulated(
+          avatarUrl: reports[i].cAvatar,
+          createdDate: reports[i].report.created,
+          desc: reports[i].report.desc,
+          user: reports[i].cName,
           status: reports[i].report.map(
                 unresolved: (_) => 'UNRESOLVED',
                 resolved: (_) => 'RESOLVED',
@@ -29,7 +32,7 @@ class ReportPopulated extends StatelessWidget {
               .report
               .mapOrNull(unresolved: (v) => () => onTileTap(reports[i])),
         ),
-        itemCount: 10,
+        itemCount: reports.length,
         padding: const EdgeInsets.all(30),
       );
 }

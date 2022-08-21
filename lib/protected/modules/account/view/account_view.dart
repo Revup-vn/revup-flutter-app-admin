@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:revup_core/core.dart';
 
-import '../../../home/widgets/widgets.dart';
 import '../../../shared/shared.dart';
 import '../widgets/widgets.dart';
 
@@ -26,10 +25,10 @@ class AccountView extends StatelessWidget {
           case 0:
             return AvatarEditingTile(
               avatar: user.avatarUrl.isNotEmpty
-                  ? AvatarFallback(name: user.lastName)
-                  : AvatarPopulated(
+                  ? AvatarPopulated(
                       url: user.avatarUrl,
-                    ),
+                    )
+                  : AvatarFallback(name: user.lastName),
               onRemove: context.showUnimplementedDialog,
               onUpload: context.showUnimplementedDialog,
             );

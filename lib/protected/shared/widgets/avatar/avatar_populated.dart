@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../widgets.dart';
+import 'avatar.dart';
 import 'avatar_failure.dart';
 import 'avatar_loading.dart';
 
@@ -19,6 +19,8 @@ class AvatarPopulated extends StatelessWidget {
           maxRadius: kAvatarMaxRadius,
           minRadius: kAvatarMinRadius,
           backgroundImage: imageProvider,
+          backgroundColor:
+              Theme.of(context).colorScheme.secondaryContainer.withOpacity(.3),
         ),
         errorWidget: (_, __, dynamic ___) => const AvatarFailure(),
         placeholder: (_, __) => const AvatarLoading(),

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-
-import 'report_image_error.dart';
-import 'report_image_loading.dart';
+import '../../../../../shared/shared.dart';
 
 class CarouselImageBuilder extends StatelessWidget {
   const CarouselImageBuilder({
@@ -18,13 +15,7 @@ class CarouselImageBuilder extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         child: Stack(
           children: <Widget>[
-            CachedNetworkImage(
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width * .7,
-              imageUrl: data.value,
-              errorWidget: (_, __, dynamic ___) => const ReportImageError(),
-              placeholder: (_, __) => const ReportImageLoading(),
-            ),
+            ImagePopulated(url: data.value),
             Positioned(
               bottom: 0,
               left: 0,

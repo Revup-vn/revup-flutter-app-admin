@@ -10,21 +10,18 @@ class ReportView extends StatelessWidget {
   const ReportView({super.key});
 
   @override
-  Widget build(BuildContext context) => AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: context.watch<ReportCubit>().state.map(
-              initial: (_) => const ReportInitial(),
-              empty: (_) => const ReportEmpty(),
-              loading: (_) => const ReportLoading(),
-              failed: (_) => ReportFailed(
-                onRetry: () => context.read<ReportCubit>().watch(),
-              ),
-              populated: (value) => ReportPopulated(
-                reports: value.records,
-                onTileTap: (Report a) => context.router.push<void>(
-                  ReportDetailRoute(report: a),
-                ),
-              ),
-            ),
+  Widget build(BuildContext context) => context.watch<ReportCubit>().state.map(
+        initial: (_) => const ReportInitial(),
+        empty: (_) => const ReportEmpty(),
+        loading: (_) => const ReportLoading(),
+        failed: (_) => ReportFailed(
+          onRetry: () => context.read<ReportCubit>().watch(),
+        ),
+        populated: (value) => ReportPopulated(
+          reports: value.records,
+          onTileTap: (Report a) => context.router.push<void>(
+            ReportDetailRoute(report: a),
+          ),
+        ),
       );
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../shared/shared.dart';
+import '../../extension_context.dart';
 
-class ReportImageLoading extends StatelessWidget {
-  const ReportImageLoading({
+class ImageLoading extends StatelessWidget {
+  const ImageLoading({
     super.key,
   });
 
