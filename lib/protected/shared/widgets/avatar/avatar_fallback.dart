@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets.dart';
+import 'avatar.dart';
 
 class AvatarFallback extends StatelessWidget {
   const AvatarFallback({super.key, required this.name});

@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:revup_core/core.dart';
 
-import '../../../../home/widgets/widgets.dart';
-import '../../models/models.dart';
+import 'avatar/avatar.dart';
 
-class ReportCardPopulated extends StatelessWidget {
-  ReportCardPopulated({
+class CardPopulated extends StatelessWidget {
+  const CardPopulated({
     super.key,
-    required Report data,
     this.onTap,
     required this.status,
-  })  : user = data.cName,
-        avatarUrl = data.cAvatar,
-        desc = data.report.desc,
-        createdDate = data.report.created;
-
+    required this.user,
+    required this.avatarUrl,
+    required this.desc,
+    required this.createdDate,
+  });
   final String user;
   final String avatarUrl;
   final String desc;
@@ -25,9 +23,8 @@ class ReportCardPopulated extends StatelessWidget {
   static const double size = 100;
 
   @override
-  Widget build(BuildContext context) => InkWell(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: onTap,
-        enableFeedback: onTap != null,
         child: Card(
           child: Row(
             children: [

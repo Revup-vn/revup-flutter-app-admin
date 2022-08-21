@@ -9,38 +9,66 @@ import 'auth_router.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute<void>(
-      page: LoginPage,
-      path: '/login',
-    ),
-    AutoRoute<void>(
-      page: InitPage,
+      page: EmptyRouterPage,
       path: '/',
-      initial: true,
-      maintainState: false,
-    ),
-    AutoRoute<void>(
-      guards: [AuthGuard],
-      page: HomePage,
-      path: '/home',
       children: [
-        RedirectRoute(path: '', redirectTo: 'account'),
         AutoRoute<void>(
-          page: AccountPage,
-          path: 'account',
+          page: InitPage,
+          path: '',
+          maintainState: false,
         ),
         AutoRoute<void>(
-          page: ReportPage,
-          path: 'reports',
+          page: LoginPage,
+          path: 'login',
+        ),
+        AutoRoute<void>(
+          guards: [AuthGuard],
+          page: HomePage,
+          path: 'home',
           children: [
+            RedirectRoute(
+              path: '',
+              redirectTo: 'account',
+            ),
             AutoRoute<void>(
-              page: ReportDetailPage,
-              path: 'detail',
+              page: AccountPage,
+              path: 'account',
+            ),
+            AutoRoute<void>(
+              page: EmptyRouterPage,
+              path: 'verifications',
+              name: 'ProviderVerificationRouter',
+              children: [
+                AutoRoute<void>(
+                  page: ProviderVerificationPage,
+                  path: '',
+                ),
+                AutoRoute<void>(
+                  page: VerificationDetailPage,
+                  path: 'detail',
+                ),
+              ],
+            ),
+            AutoRoute<void>(
+              page: EmptyRouterPage,
+              path: 'reports',
+              name: 'ReportRouter',
+              children: [
+                AutoRoute<void>(
+                  page: ReportPage,
+                  path: '',
+                ),
+                AutoRoute<void>(
+                  page: ReportDetailPage,
+                  path: 'details',
+                ),
+              ],
+            ),
+            AutoRoute<void>(
+              page: SettingsPage,
+              path: 'settings',
             ),
           ],
-        ),
-        AutoRoute<void>(
-          page: SettingsPage,
-          path: 'settings',
         ),
       ],
     ),

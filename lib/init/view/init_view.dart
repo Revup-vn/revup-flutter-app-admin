@@ -33,11 +33,9 @@ class InitView extends StatelessWidget {
             child = snapShot.hasError
                 ? const InitError()
                 : InitSuccess(
-                    onSuccess: () => Future<void>.delayed(
-                      const Duration(milliseconds: 300),
-                      () => context.router.pushAndPopUntil(
+                    onSuccess: () => Future<void>.microtask(
+                      () => context.navigateTo(
                         const HomeRoute(),
-                        predicate: (_) => true,
                       ),
                     ),
                   );

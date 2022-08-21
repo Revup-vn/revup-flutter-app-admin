@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../shared/verification_button.dart';
 
-class ReportChangedStatusButton extends StatelessWidget {
-  const ReportChangedStatusButton({
+class ProviderVerificationButton extends StatelessWidget {
+  const ProviderVerificationButton({
     super.key,
     required this.onAccept,
     required this.active,
@@ -18,6 +17,6 @@ class ReportChangedStatusButton extends StatelessWidget {
   Widget build(BuildContext context) => VerificationButton(
         onAccept: onAccept,
         active: active,
-        buttonTitle: 'Resolve this report',
+        buttonTitle: 'Verify',
       );
 }

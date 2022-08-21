@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../../../../../shared/shared.dart';
 import 'carousel_image_builder.dart';
-import 'report_carousel_empty.dart';
 
 class ReportCarousel extends StatelessWidget {
   const ReportCarousel({
@@ -17,7 +17,7 @@ class ReportCarousel extends StatelessWidget {
   Widget build(BuildContext context) => LimitedBox(
         maxHeight: 500,
         child: imgs.isEmpty
-            ? const ReportCarouselEmpty()
+            ? const ImageEmpty()
             : CarouselSlider(
                 options: CarouselOptions(
                   enlargeCenterPage: true,

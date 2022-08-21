@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ReportCarouselEmpty extends StatelessWidget {
-  const ReportCarouselEmpty({
+class ImageEmpty extends StatelessWidget {
+  const ImageEmpty({
     super.key,
   });
 

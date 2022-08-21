@@ -20,6 +20,7 @@ class ReportDetailView extends StatelessWidget {
       BlocConsumer<ReportDetailCubit, ReportDetailState>(
         listener: _onStateChanges,
         builder: (context, state) => ListView.separated(
+          padding: const EdgeInsets.only(bottom: 30),
           itemBuilder: (context, index) {
             switch (index) {
               case 0:

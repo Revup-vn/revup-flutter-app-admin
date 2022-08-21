@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:revup_core/core.dart';
 
-import '../../../../home/widgets/widgets.dart';
+import '../../../../shared/shared.dart';
 
 class FeedbackCard extends StatelessWidget {
   const FeedbackCard({
