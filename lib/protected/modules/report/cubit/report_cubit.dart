@@ -24,7 +24,10 @@ class ReportCubit extends Cubit<ReportState> {
 
     _s = irr
         .collection()
-        .where('type', isEqualTo: 6)
+        .where(
+          'type',
+          whereIn: ['6', '3'],
+        )
         .where('report', isNull: false)
         .orderBy('report')
         .orderBy('report.created', descending: true)

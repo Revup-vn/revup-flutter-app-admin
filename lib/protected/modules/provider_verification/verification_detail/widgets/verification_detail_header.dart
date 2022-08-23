@@ -20,7 +20,10 @@ class VerificationDetailHeader extends StatelessWidget {
       children: [
         const AutoLeadingButton(),
         if (avatarUrl.isNotEmpty)
-          AvatarPopulated(url: avatarUrl)
+          Hero(
+            tag: avatarUrl,
+            child: AvatarPopulated(url: avatarUrl),
+          )
         else
           AvatarFallback(name: name),
         const SizedBox(width: 30),

@@ -23,7 +23,7 @@ class ProviderDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
         '''
-Identification card numbers: $idCardNum
+Business license's numbers: $idCardNum
 Phone: $phone
 Date of birth: ${context.formatDate(dob)}
 Address: $address

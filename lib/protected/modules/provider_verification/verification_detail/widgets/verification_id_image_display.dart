@@ -15,7 +15,7 @@ class VerificationIdImageDisplay extends StatelessWidget {
     return Column(
       children: [
         Text(
-          "Identification Card's Image",
+          "Business license's Image",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         LimitedBox(
