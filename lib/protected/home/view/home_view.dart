@@ -56,30 +56,34 @@ class HomeView extends StatelessWidget {
               ),
               const VerticalDivider(width: 1, thickness: 1),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(
-                        _tabRouter.currentPath
-                            .split('/')
-                            .last
-                            .split('_')
-                            .join(' ')
-                            .toUpperCase(),
-                        style: Theme.of(context).textTheme.headline3?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 1500),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          _tabRouter.currentPath
+                              .split('/')
+                              .last
+                              .split('_')
+                              .join(' ')
+                              .toUpperCase(),
+                          style:
+                              Theme.of(context).textTheme.headline3?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: child,
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: child,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

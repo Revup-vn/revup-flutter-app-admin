@@ -26,6 +26,9 @@ class CardPopulated extends StatelessWidget {
   Widget build(BuildContext context) => GestureDetector(
         onTap: onTap,
         child: Card(
+          color: onTap == null
+              ? Theme.of(context).colorScheme.surfaceVariant.withOpacity(.7)
+              : Theme.of(context).colorScheme.surface,
           child: Row(
             children: [
               Container(
@@ -33,7 +36,10 @@ class CardPopulated extends StatelessWidget {
                 padding: const EdgeInsets.all(size / 10),
                 child: avatarUrl.isEmpty
                     ? AvatarFallback(name: user)
-                    : AvatarPopulated(url: avatarUrl),
+                    : Hero(
+                        tag: avatarUrl,
+                        child: AvatarPopulated(url: avatarUrl),
+                      ),
               ),
               Expanded(
                 child: Container(
