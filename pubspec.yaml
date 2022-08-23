@@ -1,13 +1,13 @@
 name: revup_admin
 description: A Very Good App
-version: 1.1.0-pre
+version: 1.1.1-pre
 publish_to: none
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  auto_route: ^4.0.1
+  auto_route: ^5.0.1
   cached_network_image: ^3.2.1
   carousel_slider: ^4.1.1
   dartz: ^0.10.1
@@ -22,15 +22,14 @@ dependencies:
   intl: ^0.17.0
   json_annotation: ^4.6.0
   revup_core:
-    # git:
-    #   url: https://github.com/Revup-vn/revup-core.git
-    #   ref: main
-    #   version: ^6.0.0-dev
-    path: packages/injected/revup-dev
+    git:
+      url: https://github.com/Revup-vn/revup-core.git
+      ref: main
+      version: ^6.2.4
   shimmer: ^2.0.0
 
 dev_dependencies:
-  auto_route_generator: ^4.2.0
+  auto_route_generator: ^5.0.1
   build_runner: ^2.1.11
   dart_code_metrics: ^4.17.0
   dependency_validator: ^3.2.2
