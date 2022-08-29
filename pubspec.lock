@@ -866,10 +866,10 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "2dd2d0d7ff7ef9934565fd00af286a563b4e8507"
+      resolved-ref: a4ce52ea32086af3506dc490254baf4933441a99
       url: "https://github.com/Revup-vn/revup-core.git"
     source: git
-    version: "6.2.4-dev"
+    version: "6.3.5-dev"
   rxdart:
     dependency: transitive
     description:
