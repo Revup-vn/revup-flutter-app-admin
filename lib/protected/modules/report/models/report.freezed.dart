@@ -24,6 +24,7 @@ mixin _$Report {
   String get pAddress => throw _privateConstructorUsedError;
   int get amount => throw _privateConstructorUsedError;
   ReportFeedback? get feedback => throw _privateConstructorUsedError;
+  String get displayId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReportCopyWith<Report> get copyWith => throw _privateConstructorUsedError;
@@ -41,7 +42,8 @@ abstract class $ReportCopyWith<$Res> {
       String pName,
       String pAddress,
       int amount,
-      ReportFeedback? feedback});
+      ReportFeedback? feedback,
+      String displayId});
 
   $RepairReportCopyWith<$Res> get report;
   $ReportFeedbackCopyWith<$Res>? get feedback;
@@ -65,6 +67,7 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
     Object? pAddress = freezed,
     Object? amount = freezed,
     Object? feedback = freezed,
+    Object? displayId = freezed,
   }) {
     return _then(_value.copyWith(
       report: report == freezed
@@ -99,6 +102,10 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
               as ReportFeedback?,
+      displayId: displayId == freezed
+          ? _value.displayId
+          : displayId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -134,7 +141,8 @@ abstract class _$$_ReportCopyWith<$Res> implements $ReportCopyWith<$Res> {
       String pName,
       String pAddress,
       int amount,
-      ReportFeedback? feedback});
+      ReportFeedback? feedback,
+      String displayId});
 
   @override
   $RepairReportCopyWith<$Res> get report;
@@ -161,6 +169,7 @@ class __$$_ReportCopyWithImpl<$Res> extends _$ReportCopyWithImpl<$Res>
     Object? pAddress = freezed,
     Object? amount = freezed,
     Object? feedback = freezed,
+    Object? displayId = freezed,
   }) {
     return _then(_$_Report(
       report: report == freezed
@@ -195,6 +204,10 @@ class __$$_ReportCopyWithImpl<$Res> extends _$ReportCopyWithImpl<$Res>
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
               as ReportFeedback?,
+      displayId: displayId == freezed
+          ? _value.displayId
+          : displayId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -210,7 +223,8 @@ class _$_Report implements _Report {
       required this.pName,
       required this.pAddress,
       required this.amount,
-      this.feedback});
+      this.feedback,
+      required this.displayId});
 
   @override
   final RepairReport report;
@@ -228,10 +242,12 @@ class _$_Report implements _Report {
   final int amount;
   @override
   final ReportFeedback? feedback;
+  @override
+  final String displayId;
 
   @override
   String toString() {
-    return 'Report(report: $report, id: $id, cName: $cName, cAvatar: $cAvatar, pName: $pName, pAddress: $pAddress, amount: $amount, feedback: $feedback)';
+    return 'Report(report: $report, id: $id, cName: $cName, cAvatar: $cAvatar, pName: $pName, pAddress: $pAddress, amount: $amount, feedback: $feedback, displayId: $displayId)';
   }
 
   @override
@@ -246,7 +262,8 @@ class _$_Report implements _Report {
             const DeepCollectionEquality().equals(other.pName, pName) &&
             const DeepCollectionEquality().equals(other.pAddress, pAddress) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality().equals(other.feedback, feedback));
+            const DeepCollectionEquality().equals(other.feedback, feedback) &&
+            const DeepCollectionEquality().equals(other.displayId, displayId));
   }
 
   @override
@@ -259,7 +276,8 @@ class _$_Report implements _Report {
       const DeepCollectionEquality().hash(pName),
       const DeepCollectionEquality().hash(pAddress),
       const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(feedback));
+      const DeepCollectionEquality().hash(feedback),
+      const DeepCollectionEquality().hash(displayId));
 
   @JsonKey(ignore: true)
   @override
@@ -276,7 +294,8 @@ abstract class _Report implements Report {
       required final String pName,
       required final String pAddress,
       required final int amount,
-      final ReportFeedback? feedback}) = _$_Report;
+      final ReportFeedback? feedback,
+      required final String displayId}) = _$_Report;
 
   @override
   RepairReport get report;
@@ -294,6 +313,8 @@ abstract class _Report implements Report {
   int get amount;
   @override
   ReportFeedback? get feedback;
+  @override
+  String get displayId;
   @override
   @JsonKey(ignore: true)
   _$$_ReportCopyWith<_$_Report> get copyWith =>

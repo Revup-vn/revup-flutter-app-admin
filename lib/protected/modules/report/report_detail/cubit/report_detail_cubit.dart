@@ -19,12 +19,20 @@ class ReportDetailCubit extends Cubit<ReportDetailState> {
   Future<Unit> save(Report data) async {
     final isDone = Completer<Unit>();
     emit(ReportDetailState.loading(isDone));
-    if (await _isValidReport(data)) {
+    final tester = await _isValidReport(data);
+    if (tester.head) {
       final eitherFailureOrSuccess = await _irr.updateFields(
-        RepairRecordDummy.dummyFinished(data.id).maybeMap(
-          orElse: () => throw NullThrownError(),
-          finished: (v) => v.copyWith(report: data.report),
-        ),
+        tester.tail == 'f'
+            ? RepairRecordDummy.dummyFinished(data.id).maybeMap(
+                orElse: () => throw NullThrownError(),
+                finished: (v) => v.copyWith(report: data.report),
+              )
+            : tester.tail == 'a'
+                ? RepairRecordDummy.dummyAborted(data.id).maybeMap(
+                    orElse: () => throw NullThrownError(),
+                    aborted: (v) => v.copyWith(report: data.report),
+                  )
+                : throw NullThrownError(),
         cons(RepairRecordDummy.field(RepairRecordFields.Report), nil()),
       );
       isDone.complete(unit);
@@ -41,15 +49,24 @@ class ReportDetailCubit extends Cubit<ReportDetailState> {
     return unit;
   }
 
-  Future<bool> _isValidReport(Report data) async => (await _irr.get(data.id))
-      .map(
-        (r) => r.maybeMap(
-          orElse: () => false,
-          finished: (v) =>
-              v.report
-                  ?.maybeMap(orElse: () => false, unresolved: (_) => true) ??
-              false,
-        ),
-      )
-      .getOrElse(() => false);
+  Future<Tuple2<bool, String>> _isValidReport(Report data) async {
+    final t = (await _irr.get(data.id)).map(
+      (r) => r.maybeMap(
+        orElse: () => tuple2(false, 'other'),
+        finished: (v) =>
+            v.report?.maybeMap(
+              orElse: () => tuple2(false, 'finished other'),
+              unresolved: (_) => tuple2(true, 'f'),
+            ) ??
+            tuple2(false, 'finished null'),
+        aborted: (v) =>
+            v.report?.maybeMap(
+              orElse: () => tuple2(false, 'aborted other'),
+              unresolved: (_) => tuple2(true, 'a'),
+            ) ??
+            tuple2(false, 'aborted null'),
+      ),
+    );
+    return t.getOrElse(() => tuple2(false, ''));
+  }
 }

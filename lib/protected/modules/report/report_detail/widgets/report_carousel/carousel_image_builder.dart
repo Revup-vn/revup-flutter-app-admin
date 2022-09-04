@@ -14,6 +14,7 @@ class CarouselImageBuilder extends StatelessWidget {
   Widget build(BuildContext context) => ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         child: Stack(
+          fit: StackFit.expand,
           children: <Widget>[
             ImagePopulated(url: data.value),
             Positioned(

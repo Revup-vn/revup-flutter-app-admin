@@ -13,7 +13,6 @@ class ImagePopulated extends StatelessWidget {
   @override
   Widget build(BuildContext context) => CachedNetworkImage(
         fit: BoxFit.cover,
-        width: MediaQuery.of(context).size.width * .7,
         imageUrl: url,
         errorWidget: (_, __, dynamic ___) => const ImageError(),
         placeholder: (_, __) => const ImageLoading(),

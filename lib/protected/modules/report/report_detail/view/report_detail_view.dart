@@ -25,7 +25,7 @@ class ReportDetailView extends StatelessWidget {
             switch (index) {
               case 0:
                 return ReportTitle(
-                  reportId: data.id,
+                  reportId: data.displayId,
                   tapBack: context.router.pop,
                 );
               case 1:

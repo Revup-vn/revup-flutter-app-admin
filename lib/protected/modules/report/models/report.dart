@@ -14,6 +14,7 @@ class Report with _$Report {
     required String pAddress,
     required int amount,
     ReportFeedback? feedback,
+    required String displayId,
   }) = _Report;
 
   factory Report.fromDto(
@@ -26,7 +27,8 @@ class Report with _$Report {
           finished: (val) => val.report!,
           aborted: (value) => value.report!,
         )!,
-        id: '${rec.maybeMap(
+        id: rec.id,
+        displayId: '${rec.maybeMap(
           orElse: () => throw NullThrownError(),
           aborted: (_) => "ABORTED",
           finished: (_) => "FINISHED",
