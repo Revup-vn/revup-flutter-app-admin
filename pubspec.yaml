@@ -1,6 +1,6 @@
 name: revup_admin
 description: A Very Good App
-version: 1.1.1-pre
+version: 1.1.1-pre+1
 publish_to: none
 
 environment:
@@ -25,8 +25,7 @@ dependencies:
     git:
       url: https://github.com/Revup-vn/revup-core.git
       ref: main
-      version: ^6.2.4
-    version: ^6.2.4-dev
+      version: ^6.3.7
   shimmer: ^2.0.0
 
 dev_dependencies:

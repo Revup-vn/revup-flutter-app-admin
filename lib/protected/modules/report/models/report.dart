@@ -13,7 +13,7 @@ class Report with _$Report {
     required String pName,
     required String pAddress,
     required int amount,
-    required ReportFeedback feedback,
+    ReportFeedback? feedback,
   }) = _Report;
 
   factory Report.fromDto(
@@ -22,13 +22,21 @@ class Report with _$Report {
     AppUser c,
   ) =>
       Report(
-        report: rec.mapOrNull(finished: (val) => val.report!)!,
-        id: rec.id,
+        report: rec.mapOrNull(
+          finished: (val) => val.report!,
+          aborted: (value) => value.report!,
+        )!,
+        id: '${rec.maybeMap(
+          orElse: () => throw NullThrownError(),
+          aborted: (_) => "ABORTED",
+          finished: (_) => "FINISHED",
+        )}-'
+            '${rec.id.substring(0, 10).toUpperCase()}',
         cName: '${c.firstName} ${c.lastName}',
         cAvatar: c.avatarUrl,
         pName: '${p.firstName} ${p.lastName}',
         pAddress: p.addr,
         amount: rec.money,
-        feedback: rec.mapOrNull(finished: (val) => val.feedback)!,
+        feedback: rec.mapOrNull(finished: (val) => val.feedback),
       );
 }

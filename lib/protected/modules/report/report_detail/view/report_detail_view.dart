@@ -40,15 +40,20 @@ class ReportDetailView extends StatelessWidget {
                   consumerName: data.cName,
                   providerAddress: data.pAddress,
                   providerName: data.pName,
+                  amount: data.amount,
                 );
               case 3:
-                return FeedbackCard(
-                  customerAvatar: data.cAvatar,
-                  customerName: data.cName,
-                  feedbackContent: data.feedback.desc,
-                  money: data.amount,
-                  star: data.feedback.rating,
-                );
+                if (data.feedback != null) {
+                  return FeedbackCard(
+                    customerAvatar: data.cAvatar,
+                    customerName: data.cName,
+                    feedbackContent: data.feedback?.desc ?? '',
+                    money: data.amount,
+                    star: data.feedback?.rating ?? 0,
+                  );
+                } else {
+                  return const SizedBox();
+                }
               case 4:
                 return Align(
                   child: ReportChangedStatusButton(

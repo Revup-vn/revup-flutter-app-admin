@@ -23,7 +23,7 @@ mixin _$Report {
   String get pName => throw _privateConstructorUsedError;
   String get pAddress => throw _privateConstructorUsedError;
   int get amount => throw _privateConstructorUsedError;
-  ReportFeedback get feedback => throw _privateConstructorUsedError;
+  ReportFeedback? get feedback => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReportCopyWith<Report> get copyWith => throw _privateConstructorUsedError;
@@ -41,10 +41,10 @@ abstract class $ReportCopyWith<$Res> {
       String pName,
       String pAddress,
       int amount,
-      ReportFeedback feedback});
+      ReportFeedback? feedback});
 
   $RepairReportCopyWith<$Res> get report;
-  $ReportFeedbackCopyWith<$Res> get feedback;
+  $ReportFeedbackCopyWith<$Res>? get feedback;
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
       feedback: feedback == freezed
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
-              as ReportFeedback,
+              as ReportFeedback?,
     ));
   }
 
@@ -110,8 +110,12 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
   }
 
   @override
-  $ReportFeedbackCopyWith<$Res> get feedback {
-    return $ReportFeedbackCopyWith<$Res>(_value.feedback, (value) {
+  $ReportFeedbackCopyWith<$Res>? get feedback {
+    if (_value.feedback == null) {
+      return null;
+    }
+
+    return $ReportFeedbackCopyWith<$Res>(_value.feedback!, (value) {
       return _then(_value.copyWith(feedback: value));
     });
   }
@@ -130,12 +134,12 @@ abstract class _$$_ReportCopyWith<$Res> implements $ReportCopyWith<$Res> {
       String pName,
       String pAddress,
       int amount,
-      ReportFeedback feedback});
+      ReportFeedback? feedback});
 
   @override
   $RepairReportCopyWith<$Res> get report;
   @override
-  $ReportFeedbackCopyWith<$Res> get feedback;
+  $ReportFeedbackCopyWith<$Res>? get feedback;
 }
 
 /// @nodoc
@@ -190,7 +194,7 @@ class __$$_ReportCopyWithImpl<$Res> extends _$ReportCopyWithImpl<$Res>
       feedback: feedback == freezed
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
-              as ReportFeedback,
+              as ReportFeedback?,
     ));
   }
 }
@@ -206,7 +210,7 @@ class _$_Report implements _Report {
       required this.pName,
       required this.pAddress,
       required this.amount,
-      required this.feedback});
+      this.feedback});
 
   @override
   final RepairReport report;
@@ -223,7 +227,7 @@ class _$_Report implements _Report {
   @override
   final int amount;
   @override
-  final ReportFeedback feedback;
+  final ReportFeedback? feedback;
 
   @override
   String toString() {
@@ -272,7 +276,7 @@ abstract class _Report implements Report {
       required final String pName,
       required final String pAddress,
       required final int amount,
-      required final ReportFeedback feedback}) = _$_Report;
+      final ReportFeedback? feedback}) = _$_Report;
 
   @override
   RepairReport get report;
@@ -289,7 +293,7 @@ abstract class _Report implements Report {
   @override
   int get amount;
   @override
-  ReportFeedback get feedback;
+  ReportFeedback? get feedback;
   @override
   @JsonKey(ignore: true)
   _$$_ReportCopyWith<_$_Report> get copyWith =>
