@@ -23,7 +23,8 @@ class VerificationRequestPopulated extends StatelessWidget {
           createdDate: infos[i].created,
           desc: infos[i].bio,
           user: infos[i].name,
-          status: 'NEED TO VERIFY',
+          status:
+              infos[i].needToReVerify ? 'RE-VERIFY-NEEDED' : 'NEED TO VERIFY',
           onTap: () => onTileTap(infos[i]),
         ),
         itemCount: infos.length,

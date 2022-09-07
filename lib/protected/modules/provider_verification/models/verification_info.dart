@@ -17,6 +17,7 @@ class VerificationInfo with _$VerificationInfo {
     required String email,
     required DateTime created,
     required String bio,
+    required bool needToReVerify,
   }) = _VerificationInfo;
 
   factory VerificationInfo.fromDto(AppUser user) => user.maybeMap(
@@ -33,6 +34,7 @@ class VerificationInfo with _$VerificationInfo {
           email: v.email,
           bio: v.bio,
           created: v.createdTime,
+          needToReVerify: v.needToUpdateInfo,
         ),
       );
 }

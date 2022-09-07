@@ -42,18 +42,21 @@ class VerificationDetailView extends StatelessWidget {
                 );
 
               case 3:
-                return Align(
-                  child: ProviderVerificationButton(
-                    active: state.maybeMap(
-                      orElse: () => false,
-                      initial: (_) => true,
-                      failed: (_) => true,
-                    ),
-                    onAccept: () =>
-                        context.read<VerificationDetailCubit>().save(
-                              info.id,
-                            ),
+                return ProviderVerificationActions(
+                  reverifyStatus: info.needToReVerify,
+                  active: state.maybeMap(
+                    orElse: () => false,
+                    initial: (_) => true,
+                    failed: (_) => true,
                   ),
+                  onAccept: () => context.read<VerificationDetailCubit>().save(
+                        info.id,
+                      ),
+                  onReVerify: () =>
+                      context.read<VerificationDetailCubit>().save(
+                            info.id,
+                            isVerify: false,
+                          ),
                 );
               default:
                 throw NullThrownError();

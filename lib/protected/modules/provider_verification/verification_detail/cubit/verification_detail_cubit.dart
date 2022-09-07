@@ -15,18 +15,12 @@ class VerificationDetailCubit extends Cubit<VerificationDetailState> {
 
   void reset() => emit(const VerificationDetailState.initial());
 
-  Future<Unit> save(String id) async {
+  Future<Unit> save(String id, {bool isVerify = true}) async {
     final isDone = Completer<Unit>();
     emit(VerificationDetailState.loading(isDone));
     if (!(await _iau.isFieldValid(AppUserDummy.field(AppUserFields.UserId), id))
         .getOrElse(() => true)) {
-      final eitherFailureOrSuccess = await _iau.updateFields(
-        AppUserDummy.dummyProvider(id).maybeMap(
-          orElse: () => throw NullThrownError(),
-          provider: (v) => v.copyWith(active: true),
-        ),
-        cons(AppUserDummy.field(AppUserFields.Active), nil()),
-      );
+      final eitherFailureOrSuccess = await _auxVerify(id, isVerify);
       isDone.complete(unit);
       eitherFailureOrSuccess.fold(
         (l) => emit(const VerificationDetailState.failed()),
@@ -43,5 +37,30 @@ class VerificationDetailCubit extends Cubit<VerificationDetailState> {
     await isDone.future;
 
     return unit;
+  }
+
+  Future<Either<StoreFailure, Unit>> _auxVerify(
+    String id, [
+    bool changeVerify = true,
+  ]) async {
+    final eitherFailureOrSuccess = await _iau.updateFields(
+      AppUserDummy.dummyProvider(id).maybeMap(
+        orElse: () => throw NullThrownError(),
+        provider: (v) => v.copyWith(
+          active: changeVerify,
+          needToUpdateInfo: !changeVerify,
+        ),
+      ),
+      cons(
+        AppUserDummy.field(AppUserFields.NeedToUpdateInfo),
+        cons(
+          AppUserDummy.field(
+            AppUserFields.Active,
+          ),
+          nil(),
+        ),
+      ),
+    );
+    return eitherFailureOrSuccess;
   }
 }

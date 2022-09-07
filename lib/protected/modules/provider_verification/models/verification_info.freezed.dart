@@ -27,6 +27,7 @@ mixin _$VerificationInfo {
   String get email => throw _privateConstructorUsedError;
   DateTime get created => throw _privateConstructorUsedError;
   String get bio => throw _privateConstructorUsedError;
+  bool get needToReVerify => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $VerificationInfoCopyWith<VerificationInfo> get copyWith =>
@@ -49,7 +50,8 @@ abstract class $VerificationInfoCopyWith<$Res> {
       String address,
       String email,
       DateTime created,
-      String bio});
+      String bio,
+      bool needToReVerify});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$VerificationInfoCopyWithImpl<$Res>
     Object? email = freezed,
     Object? created = freezed,
     Object? bio = freezed,
+    Object? needToReVerify = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -120,6 +123,10 @@ class _$VerificationInfoCopyWithImpl<$Res>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String,
+      needToReVerify: needToReVerify == freezed
+          ? _value.needToReVerify
+          : needToReVerify // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -142,7 +149,8 @@ abstract class _$$_VerificationInfoCopyWith<$Res>
       String address,
       String email,
       DateTime created,
-      String bio});
+      String bio,
+      bool needToReVerify});
 }
 
 /// @nodoc
@@ -169,6 +177,7 @@ class __$$_VerificationInfoCopyWithImpl<$Res>
     Object? email = freezed,
     Object? created = freezed,
     Object? bio = freezed,
+    Object? needToReVerify = freezed,
   }) {
     return _then(_$_VerificationInfo(
       id: id == freezed
@@ -215,6 +224,10 @@ class __$$_VerificationInfoCopyWithImpl<$Res>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String,
+      needToReVerify: needToReVerify == freezed
+          ? _value.needToReVerify
+          : needToReVerify // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -233,7 +246,8 @@ class _$_VerificationInfo implements _VerificationInfo {
       required this.address,
       required this.email,
       required this.created,
-      required this.bio});
+      required this.bio,
+      required this.needToReVerify});
 
   @override
   final String id;
@@ -257,10 +271,12 @@ class _$_VerificationInfo implements _VerificationInfo {
   final DateTime created;
   @override
   final String bio;
+  @override
+  final bool needToReVerify;
 
   @override
   String toString() {
-    return 'VerificationInfo(id: $id, name: $name, avatar: $avatar, idImg: $idImg, idCardNum: $idCardNum, phone: $phone, dob: $dob, address: $address, email: $email, created: $created, bio: $bio)';
+    return 'VerificationInfo(id: $id, name: $name, avatar: $avatar, idImg: $idImg, idCardNum: $idCardNum, phone: $phone, dob: $dob, address: $address, email: $email, created: $created, bio: $bio, needToReVerify: $needToReVerify)';
   }
 
   @override
@@ -278,7 +294,9 @@ class _$_VerificationInfo implements _VerificationInfo {
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.created, created) &&
-            const DeepCollectionEquality().equals(other.bio, bio));
+            const DeepCollectionEquality().equals(other.bio, bio) &&
+            const DeepCollectionEquality()
+                .equals(other.needToReVerify, needToReVerify));
   }
 
   @override
@@ -294,7 +312,8 @@ class _$_VerificationInfo implements _VerificationInfo {
       const DeepCollectionEquality().hash(address),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(created),
-      const DeepCollectionEquality().hash(bio));
+      const DeepCollectionEquality().hash(bio),
+      const DeepCollectionEquality().hash(needToReVerify));
 
   @JsonKey(ignore: true)
   @override
@@ -314,7 +333,8 @@ abstract class _VerificationInfo implements VerificationInfo {
       required final String address,
       required final String email,
       required final DateTime created,
-      required final String bio}) = _$_VerificationInfo;
+      required final String bio,
+      required final bool needToReVerify}) = _$_VerificationInfo;
 
   @override
   String get id;
@@ -338,6 +358,8 @@ abstract class _VerificationInfo implements VerificationInfo {
   DateTime get created;
   @override
   String get bio;
+  @override
+  bool get needToReVerify;
   @override
   @JsonKey(ignore: true)
   _$$_VerificationInfoCopyWith<_$_VerificationInfo> get copyWith =>
