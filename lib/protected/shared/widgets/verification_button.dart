@@ -31,7 +31,7 @@ class VerificationButton extends StatelessWidget {
                   ),
                   content: const Text(
                     'The action is non-reversible.'
-                    ' Do you want to resolve this report?',
+                    ' Do you want to process this action?',
                     maxLines: 2,
                     softWrap: true,
                     textAlign: TextAlign.center,

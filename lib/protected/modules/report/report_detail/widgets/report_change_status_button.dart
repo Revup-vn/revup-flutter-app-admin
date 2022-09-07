@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../../shared/verification_button.dart';
+import '../../../../shared/widgets/verification_button.dart';
 
 class ReportChangedStatusButton extends StatelessWidget {
   const ReportChangedStatusButton({

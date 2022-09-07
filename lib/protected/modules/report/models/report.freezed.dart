@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Report {
   RepairReport get report => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  String get cid => throw _privateConstructorUsedError;
+  String get pid => throw _privateConstructorUsedError;
   String get cName => throw _privateConstructorUsedError;
   String get cAvatar => throw _privateConstructorUsedError;
   String get pName => throw _privateConstructorUsedError;
@@ -37,6 +39,8 @@ abstract class $ReportCopyWith<$Res> {
   $Res call(
       {RepairReport report,
       String id,
+      String cid,
+      String pid,
       String cName,
       String cAvatar,
       String pName,
@@ -61,6 +65,8 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
   $Res call({
     Object? report = freezed,
     Object? id = freezed,
+    Object? cid = freezed,
+    Object? pid = freezed,
     Object? cName = freezed,
     Object? cAvatar = freezed,
     Object? pName = freezed,
@@ -77,6 +83,14 @@ class _$ReportCopyWithImpl<$Res> implements $ReportCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      cid: cid == freezed
+          ? _value.cid
+          : cid // ignore: cast_nullable_to_non_nullable
+              as String,
+      pid: pid == freezed
+          ? _value.pid
+          : pid // ignore: cast_nullable_to_non_nullable
               as String,
       cName: cName == freezed
           ? _value.cName
@@ -136,6 +150,8 @@ abstract class _$$_ReportCopyWith<$Res> implements $ReportCopyWith<$Res> {
   $Res call(
       {RepairReport report,
       String id,
+      String cid,
+      String pid,
       String cName,
       String cAvatar,
       String pName,
@@ -163,6 +179,8 @@ class __$$_ReportCopyWithImpl<$Res> extends _$ReportCopyWithImpl<$Res>
   $Res call({
     Object? report = freezed,
     Object? id = freezed,
+    Object? cid = freezed,
+    Object? pid = freezed,
     Object? cName = freezed,
     Object? cAvatar = freezed,
     Object? pName = freezed,
@@ -179,6 +197,14 @@ class __$$_ReportCopyWithImpl<$Res> extends _$ReportCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      cid: cid == freezed
+          ? _value.cid
+          : cid // ignore: cast_nullable_to_non_nullable
+              as String,
+      pid: pid == freezed
+          ? _value.pid
+          : pid // ignore: cast_nullable_to_non_nullable
               as String,
       cName: cName == freezed
           ? _value.cName
@@ -218,6 +244,8 @@ class _$_Report implements _Report {
   const _$_Report(
       {required this.report,
       required this.id,
+      required this.cid,
+      required this.pid,
       required this.cName,
       required this.cAvatar,
       required this.pName,
@@ -230,6 +258,10 @@ class _$_Report implements _Report {
   final RepairReport report;
   @override
   final String id;
+  @override
+  final String cid;
+  @override
+  final String pid;
   @override
   final String cName;
   @override
@@ -247,7 +279,7 @@ class _$_Report implements _Report {
 
   @override
   String toString() {
-    return 'Report(report: $report, id: $id, cName: $cName, cAvatar: $cAvatar, pName: $pName, pAddress: $pAddress, amount: $amount, feedback: $feedback, displayId: $displayId)';
+    return 'Report(report: $report, id: $id, cid: $cid, pid: $pid, cName: $cName, cAvatar: $cAvatar, pName: $pName, pAddress: $pAddress, amount: $amount, feedback: $feedback, displayId: $displayId)';
   }
 
   @override
@@ -257,6 +289,8 @@ class _$_Report implements _Report {
             other is _$_Report &&
             const DeepCollectionEquality().equals(other.report, report) &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.cid, cid) &&
+            const DeepCollectionEquality().equals(other.pid, pid) &&
             const DeepCollectionEquality().equals(other.cName, cName) &&
             const DeepCollectionEquality().equals(other.cAvatar, cAvatar) &&
             const DeepCollectionEquality().equals(other.pName, pName) &&
@@ -271,6 +305,8 @@ class _$_Report implements _Report {
       runtimeType,
       const DeepCollectionEquality().hash(report),
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(cid),
+      const DeepCollectionEquality().hash(pid),
       const DeepCollectionEquality().hash(cName),
       const DeepCollectionEquality().hash(cAvatar),
       const DeepCollectionEquality().hash(pName),
@@ -289,6 +325,8 @@ abstract class _Report implements Report {
   const factory _Report(
       {required final RepairReport report,
       required final String id,
+      required final String cid,
+      required final String pid,
       required final String cName,
       required final String cAvatar,
       required final String pName,
@@ -301,6 +339,10 @@ abstract class _Report implements Report {
   RepairReport get report;
   @override
   String get id;
+  @override
+  String get cid;
+  @override
+  String get pid;
   @override
   String get cName;
   @override
