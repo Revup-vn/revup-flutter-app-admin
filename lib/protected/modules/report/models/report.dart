@@ -8,6 +8,8 @@ class Report with _$Report {
   const factory Report({
     required RepairReport report,
     required String id,
+    required String cid,
+    required String pid,
     required String cName,
     required String cAvatar,
     required String pName,
@@ -28,6 +30,8 @@ class Report with _$Report {
           aborted: (value) => value.report!,
         )!,
         id: rec.id,
+        cid: rec.cid,
+        pid: rec.pid,
         displayId: '${rec.maybeMap(
           orElse: () => throw NullThrownError(),
           aborted: (_) => "ABORTED",

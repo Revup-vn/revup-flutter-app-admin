@@ -16,28 +16,39 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ReportDetailState {
+  Tuple2<bool, bool> get showBanActions => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) saved,
-    required TResult Function(Completer<Unit> isDone) loading,
-    required TResult Function() failed,
+    required TResult Function(Tuple2<bool, bool> showBanActions) initial,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)
+        saved,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)
+        loading,
+    required TResult Function(Tuple2<bool, bool> showBanActions) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +77,10 @@ mixin _$ReportDetailState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ReportDetailStateCopyWith<ReportDetailState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -73,6 +88,7 @@ abstract class $ReportDetailStateCopyWith<$Res> {
   factory $ReportDetailStateCopyWith(
           ReportDetailState value, $Res Function(ReportDetailState) then) =
       _$ReportDetailStateCopyWithImpl<$Res>;
+  $Res call({Tuple2<bool, bool> showBanActions});
 }
 
 /// @nodoc
@@ -83,13 +99,28 @@ class _$ReportDetailStateCopyWithImpl<$Res>
   final ReportDetailState _value;
   // ignore: unused_field
   final $Res Function(ReportDetailState) _then;
+
+  @override
+  $Res call({
+    Object? showBanActions = freezed,
+  }) {
+    return _then(_value.copyWith(
+      showBanActions: showBanActions == freezed
+          ? _value.showBanActions
+          : showBanActions // ignore: cast_nullable_to_non_nullable
+              as Tuple2<bool, bool>,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_initialCopyWith<$Res> {
+abstract class _$$_initialCopyWith<$Res>
+    implements $ReportDetailStateCopyWith<$Res> {
   factory _$$_initialCopyWith(
           _$_initial value, $Res Function(_$_initial) then) =
       __$$_initialCopyWithImpl<$Res>;
+  @override
+  $Res call({Tuple2<bool, bool> showBanActions});
 }
 
 /// @nodoc
@@ -101,60 +132,94 @@ class __$$_initialCopyWithImpl<$Res>
 
   @override
   _$_initial get _value => super._value as _$_initial;
+
+  @override
+  $Res call({
+    Object? showBanActions = freezed,
+  }) {
+    return _then(_$_initial(
+      showBanActions == freezed
+          ? _value.showBanActions
+          : showBanActions // ignore: cast_nullable_to_non_nullable
+              as Tuple2<bool, bool>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_initial implements _initial {
-  const _$_initial();
+  const _$_initial(this.showBanActions);
+
+  @override
+  final Tuple2<bool, bool> showBanActions;
 
   @override
   String toString() {
-    return 'ReportDetailState.initial()';
+    return 'ReportDetailState.initial(showBanActions: $showBanActions)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_initial &&
+            const DeepCollectionEquality()
+                .equals(other.showBanActions, showBanActions));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(showBanActions));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_initialCopyWith<_$_initial> get copyWith =>
+      __$$_initialCopyWithImpl<_$_initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) saved,
-    required TResult Function(Completer<Unit> isDone) loading,
-    required TResult Function() failed,
+    required TResult Function(Tuple2<bool, bool> showBanActions) initial,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)
+        saved,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)
+        loading,
+    required TResult Function(Tuple2<bool, bool> showBanActions) failed,
   }) {
-    return initial();
+    return initial(showBanActions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
   }) {
-    return initial?.call();
+    return initial?.call(showBanActions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(showBanActions);
     }
     return orElse();
   }
@@ -198,14 +263,23 @@ class _$_initial implements _initial {
 }
 
 abstract class _initial implements ReportDetailState {
-  const factory _initial() = _$_initial;
+  const factory _initial(final Tuple2<bool, bool> showBanActions) = _$_initial;
+
+  @override
+  Tuple2<bool, bool> get showBanActions;
+  @override
+  @JsonKey(ignore: true)
+  _$$_initialCopyWith<_$_initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_savedCopyWith<$Res> {
+abstract class _$$_savedCopyWith<$Res>
+    implements $ReportDetailStateCopyWith<$Res> {
   factory _$$_savedCopyWith(_$_saved value, $Res Function(_$_saved) then) =
       __$$_savedCopyWithImpl<$Res>;
-  $Res call({String message});
+  @override
+  $Res call({Tuple2<bool, bool> showBanActions, String message, bool isPop});
 }
 
 /// @nodoc
@@ -219,13 +293,23 @@ class __$$_savedCopyWithImpl<$Res> extends _$ReportDetailStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? showBanActions = freezed,
     Object? message = freezed,
+    Object? isPop = freezed,
   }) {
     return _then(_$_saved(
+      showBanActions == freezed
+          ? _value.showBanActions
+          : showBanActions // ignore: cast_nullable_to_non_nullable
+              as Tuple2<bool, bool>,
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      isPop: isPop == freezed
+          ? _value.isPop
+          : isPop // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -233,14 +317,18 @@ class __$$_savedCopyWithImpl<$Res> extends _$ReportDetailStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_saved implements _saved {
-  const _$_saved(this.message);
+  const _$_saved(this.showBanActions, this.message, {required this.isPop});
 
   @override
+  final Tuple2<bool, bool> showBanActions;
+  @override
   final String message;
+  @override
+  final bool isPop;
 
   @override
   String toString() {
-    return 'ReportDetailState.saved(message: $message)';
+    return 'ReportDetailState.saved(showBanActions: $showBanActions, message: $message, isPop: $isPop)';
   }
 
   @override
@@ -248,12 +336,18 @@ class _$_saved implements _saved {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_saved &&
-            const DeepCollectionEquality().equals(other.message, message));
+            const DeepCollectionEquality()
+                .equals(other.showBanActions, showBanActions) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality().equals(other.isPop, isPop));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(showBanActions),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(isPop));
 
   @JsonKey(ignore: true)
   @override
@@ -263,36 +357,46 @@ class _$_saved implements _saved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) saved,
-    required TResult Function(Completer<Unit> isDone) loading,
-    required TResult Function() failed,
+    required TResult Function(Tuple2<bool, bool> showBanActions) initial,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)
+        saved,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)
+        loading,
+    required TResult Function(Tuple2<bool, bool> showBanActions) failed,
   }) {
-    return saved(message);
+    return saved(showBanActions, message, isPop);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
   }) {
-    return saved?.call(message);
+    return saved?.call(showBanActions, message, isPop);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
     required TResult orElse(),
   }) {
     if (saved != null) {
-      return saved(message);
+      return saved(showBanActions, message, isPop);
     }
     return orElse();
   }
@@ -336,20 +440,28 @@ class _$_saved implements _saved {
 }
 
 abstract class _saved implements ReportDetailState {
-  const factory _saved(final String message) = _$_saved;
+  const factory _saved(
+      final Tuple2<bool, bool> showBanActions, final String message,
+      {required final bool isPop}) = _$_saved;
 
+  @override
+  Tuple2<bool, bool> get showBanActions;
   String get message;
+  bool get isPop;
+  @override
   @JsonKey(ignore: true)
   _$$_savedCopyWith<_$_saved> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
+abstract class _$$_loadingCopyWith<$Res>
+    implements $ReportDetailStateCopyWith<$Res> {
   factory _$$_loadingCopyWith(
           _$_loading value, $Res Function(_$_loading) then) =
       __$$_loadingCopyWithImpl<$Res>;
-  $Res call({Completer<Unit> isDone});
+  @override
+  $Res call({Tuple2<bool, bool> showBanActions, Completer<Unit> isDone});
 }
 
 /// @nodoc
@@ -364,9 +476,14 @@ class __$$_loadingCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? showBanActions = freezed,
     Object? isDone = freezed,
   }) {
     return _then(_$_loading(
+      showBanActions == freezed
+          ? _value.showBanActions
+          : showBanActions // ignore: cast_nullable_to_non_nullable
+              as Tuple2<bool, bool>,
       isDone == freezed
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
@@ -378,14 +495,16 @@ class __$$_loadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_loading implements _loading {
-  const _$_loading(this.isDone);
+  const _$_loading(this.showBanActions, this.isDone);
 
+  @override
+  final Tuple2<bool, bool> showBanActions;
   @override
   final Completer<Unit> isDone;
 
   @override
   String toString() {
-    return 'ReportDetailState.loading(isDone: $isDone)';
+    return 'ReportDetailState.loading(showBanActions: $showBanActions, isDone: $isDone)';
   }
 
   @override
@@ -393,12 +512,16 @@ class _$_loading implements _loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_loading &&
+            const DeepCollectionEquality()
+                .equals(other.showBanActions, showBanActions) &&
             const DeepCollectionEquality().equals(other.isDone, isDone));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(isDone));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(showBanActions),
+      const DeepCollectionEquality().hash(isDone));
 
   @JsonKey(ignore: true)
   @override
@@ -408,36 +531,46 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) saved,
-    required TResult Function(Completer<Unit> isDone) loading,
-    required TResult Function() failed,
+    required TResult Function(Tuple2<bool, bool> showBanActions) initial,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)
+        saved,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)
+        loading,
+    required TResult Function(Tuple2<bool, bool> showBanActions) failed,
   }) {
-    return loading(isDone);
+    return loading(showBanActions, isDone);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
   }) {
-    return loading?.call(isDone);
+    return loading?.call(showBanActions, isDone);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(isDone);
+      return loading(showBanActions, isDone);
     }
     return orElse();
   }
@@ -481,18 +614,25 @@ class _$_loading implements _loading {
 }
 
 abstract class _loading implements ReportDetailState {
-  const factory _loading(final Completer<Unit> isDone) = _$_loading;
+  const factory _loading(final Tuple2<bool, bool> showBanActions,
+      final Completer<Unit> isDone) = _$_loading;
 
+  @override
+  Tuple2<bool, bool> get showBanActions;
   Completer<Unit> get isDone;
+  @override
   @JsonKey(ignore: true)
   _$$_loadingCopyWith<_$_loading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_failedCopyWith<$Res> {
+abstract class _$$_failedCopyWith<$Res>
+    implements $ReportDetailStateCopyWith<$Res> {
   factory _$$_failedCopyWith(_$_failed value, $Res Function(_$_failed) then) =
       __$$_failedCopyWithImpl<$Res>;
+  @override
+  $Res call({Tuple2<bool, bool> showBanActions});
 }
 
 /// @nodoc
@@ -504,60 +644,94 @@ class __$$_failedCopyWithImpl<$Res>
 
   @override
   _$_failed get _value => super._value as _$_failed;
+
+  @override
+  $Res call({
+    Object? showBanActions = freezed,
+  }) {
+    return _then(_$_failed(
+      showBanActions == freezed
+          ? _value.showBanActions
+          : showBanActions // ignore: cast_nullable_to_non_nullable
+              as Tuple2<bool, bool>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_failed implements _failed {
-  const _$_failed();
+  const _$_failed(this.showBanActions);
+
+  @override
+  final Tuple2<bool, bool> showBanActions;
 
   @override
   String toString() {
-    return 'ReportDetailState.failed()';
+    return 'ReportDetailState.failed(showBanActions: $showBanActions)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_failed);
+        (other.runtimeType == runtimeType &&
+            other is _$_failed &&
+            const DeepCollectionEquality()
+                .equals(other.showBanActions, showBanActions));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(showBanActions));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_failedCopyWith<_$_failed> get copyWith =>
+      __$$_failedCopyWithImpl<_$_failed>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) saved,
-    required TResult Function(Completer<Unit> isDone) loading,
-    required TResult Function() failed,
+    required TResult Function(Tuple2<bool, bool> showBanActions) initial,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)
+        saved,
+    required TResult Function(
+            Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)
+        loading,
+    required TResult Function(Tuple2<bool, bool> showBanActions) failed,
   }) {
-    return failed();
+    return failed(showBanActions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
   }) {
-    return failed?.call();
+    return failed?.call(showBanActions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? saved,
-    TResult Function(Completer<Unit> isDone)? loading,
-    TResult Function()? failed,
+    TResult Function(Tuple2<bool, bool> showBanActions)? initial,
+    TResult Function(
+            Tuple2<bool, bool> showBanActions, String message, bool isPop)?
+        saved,
+    TResult Function(Tuple2<bool, bool> showBanActions, Completer<Unit> isDone)?
+        loading,
+    TResult Function(Tuple2<bool, bool> showBanActions)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed();
+      return failed(showBanActions);
     }
     return orElse();
   }
@@ -601,5 +775,12 @@ class _$_failed implements _failed {
 }
 
 abstract class _failed implements ReportDetailState {
-  const factory _failed() = _$_failed;
+  const factory _failed(final Tuple2<bool, bool> showBanActions) = _$_failed;
+
+  @override
+  Tuple2<bool, bool> get showBanActions;
+  @override
+  @JsonKey(ignore: true)
+  _$$_failedCopyWith<_$_failed> get copyWith =>
+      throw _privateConstructorUsedError;
 }

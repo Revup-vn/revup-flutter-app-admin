@@ -55,32 +55,39 @@ class ReportDetailView extends StatelessWidget {
                   return const SizedBox();
                 }
               case 4:
-                return Align(
-                  child: ReportChangedStatusButton(
-                    active: state.maybeMap(
-                      orElse: () => false,
-                      initial: (_) => true,
-                      failed: (_) => true,
-                    ),
-                    onAccept: () => context.read<ReportDetailCubit>().save(
-                          data.copyWith(
-                            report: RepairReport.resolved(
-                              category: data.report.category,
-                              desc: data.report.desc,
-                              imgs: data.report.imgs,
-                              created: data.report.created,
-                              resolved: DateTime.now(),
-                              aId: context
-                                  .read<AuthenticateBloc>()
-                                  .state
-                                  .maybeMap(
-                                    orElse: () => throw NullThrownError(),
-                                    authenticated: (s) => s.authType.user.uuid,
-                                  ),
-                            ),
+                return ReportChangedStatusActions(
+                  active: state.maybeMap(
+                    orElse: () => false,
+                    initial: (_) => true,
+                    failed: (_) => true,
+                  ),
+                  onAccept: () => context.read<ReportDetailCubit>().save(
+                        data.copyWith(
+                          report: RepairReport.resolved(
+                            category: data.report.category,
+                            desc: data.report.desc,
+                            imgs: data.report.imgs,
+                            created: data.report.created,
+                            resolved: DateTime.now(),
+                            aId: context
+                                .read<AuthenticateBloc>()
+                                .state
+                                .maybeMap(
+                                  orElse: () => throw NullThrownError(),
+                                  authenticated: (s) => s.authType.user.uuid,
+                                ),
                           ),
                         ),
-                  ),
+                      ),
+                  showBanActions: state.showBanActions,
+                  onBanConsumer: () => context.read<ReportDetailCubit>().ban(
+                        data.cid,
+                        isConsumer: true,
+                      ),
+                  onBanProvider: () => context.read<ReportDetailCubit>().ban(
+                        data.pid,
+                        isConsumer: false,
+                      ),
                 );
               default:
                 throw NullThrownError();
@@ -95,20 +102,24 @@ class ReportDetailView extends StatelessWidget {
 
   void _onStateChanges(BuildContext context, ReportDetailState state) =>
       state.when(
-        initial: () => unit,
-        saved: (message) => context
+        initial: (_) => unit,
+        saved: (actions, message, isPop) => context
             .showSuccessBar<void>(
               content: Text(
                 message,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             )
-            .then((_) => context.router.pop()),
-        loading: (v) => context.showBlockDialog(dismissCompleter: v),
-        failed: () => context
+            .then(
+              (_) => isPop
+                  ? context.router.pop()
+                  : context.read<ReportDetailCubit>().reset(),
+            ),
+        loading: (_, v) => context.showBlockDialog(dismissCompleter: v),
+        failed: (_) => context
             .showErrorBar<void>(
               content: Text(
-                'There is an error when saving the report! Please try again',
+                'There is an error in the process! Please try again',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             )
