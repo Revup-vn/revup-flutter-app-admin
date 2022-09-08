@@ -5,12 +5,12 @@ import 'package:revup_core/core.dart';
 
 mixin AppUserMixin {
   @protected
-  Future<bool> isUserPermissible(
+  Future<bool> fetchIsUserPermissible(
     IStore<AppUser> iau,
     String uid,
   ) async =>
       (await iau.get(uid))
-          .fold((l) => false, (r) async => _isUserFreeOfViolation(r));
+          .fold((l) => false, (r) async => isUserFreeOfViolation(r));
 
   @protected
   Future<bool> banUser(IStore<AppUser> iau, String uid) async =>
@@ -36,7 +36,7 @@ mixin AppUserMixin {
           )
           .getOrElse(() async => false);
 
-  bool _isUserFreeOfViolation(AppUser r) => r.map(
+  bool isUserFreeOfViolation(AppUser r) => r.map(
         consumer: (c) =>
             c.bannedValidatedDate == null ||
             c.violatedTimes < 3 ||

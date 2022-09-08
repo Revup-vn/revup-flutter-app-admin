@@ -3,6 +3,7 @@ import 'package:auto_route/empty_router_widgets.dart';
 
 import '../init/init.dart';
 import '../login/login.dart';
+import '../protected/modules/users/view/view.dart';
 import '../protected/protected.dart';
 import 'auth_router.dart';
 
@@ -35,6 +36,7 @@ import 'auth_router.dart';
               page: AccountPage,
               path: 'account',
             ),
+            AutoRoute<void>(page: UsersPage, path: 'users'),
             AutoRoute<void>(
               page: EmptyRouterPage,
               path: 'verifications',

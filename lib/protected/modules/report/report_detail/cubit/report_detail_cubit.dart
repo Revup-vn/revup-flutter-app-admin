@@ -18,8 +18,10 @@ class ReportDetailCubit extends Cubit<ReportDetailState> with AppUserMixin {
     String cid,
     String pid,
   ) : super(ReportDetailState.initial(tuple2(false, false))) {
-    Future.wait([isUserPermissible(_iau, cid), isUserPermissible(_iau, pid)])
-        .then(
+    Future.wait([
+      fetchIsUserPermissible(_iau, cid),
+      fetchIsUserPermissible(_iau, pid)
+    ]).then(
       (value) => emit(
         ReportDetailState.initial(
           tuple2(

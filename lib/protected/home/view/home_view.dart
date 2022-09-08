@@ -12,6 +12,7 @@ class HomeView extends StatelessWidget {
         routes: const [
           AccountRoute(),
           ProviderVerificationRouter(),
+          UsersRoute(),
           ReportRouter(),
           SettingsRoute(),
         ],
@@ -35,6 +36,11 @@ class HomeView extends StatelessWidget {
                       'Accounts\nverification',
                       textAlign: TextAlign.center,
                     ),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.person_search_outlined),
+                    selectedIcon: Icon(Icons.person_search),
+                    label: Text('Users'),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.document_scanner_outlined),
