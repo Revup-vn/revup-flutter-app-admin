@@ -337,6 +337,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.2"
+  eventify:
+    dependency: transitive
+    description:
+      name: eventify
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -707,6 +714,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  momo_vn:
+    dependency: transitive
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "45642adbaa8a66b6c1da6fa1e3d9441629057df3"
+      url: "https://github.com/minhvn/momo.vn.git"
+    source: git
+    version: "2.0.2"
   nested:
     dependency: transitive
     description:
@@ -864,10 +880,12 @@ packages:
   revup_core:
     dependency: "direct main"
     description:
-      path: "packages/injected/revup-dev"
-      relative: true
-    source: path
-    version: "6.3.8-dev"
+      path: "."
+      ref: main
+      resolved-ref: "1effec7df0cca4dd47753b4fd8b77aa1aae46216"
+      url: "https://github.com/Revup-vn/revup-core.git"
+    source: git
+    version: "6.3.10-dev"
   rxdart:
     dependency: "direct main"
     description:
