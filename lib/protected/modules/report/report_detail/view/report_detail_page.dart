@@ -13,7 +13,12 @@ class ReportDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => ReportDetailCubit(context.read()),
+        create: (context) => ReportDetailCubit(
+          context.read(),
+          context.read(),
+          report.cid,
+          report.pid,
+        ),
         child: ReportDetailView(data: report),
       );
 }

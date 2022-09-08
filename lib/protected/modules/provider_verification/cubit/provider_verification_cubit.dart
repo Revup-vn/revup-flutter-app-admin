@@ -24,6 +24,10 @@ class ProviderVerificationCubit extends Cubit<ProviderVerificationState> {
     _s = _iau
         .collection()
         .where('type', isEqualTo: '2')
+        .where(
+          AppUserDummy.field(AppUserFields.ProviderInactiveTo),
+          isNotEqualTo: null,
+        )
         .where(AppUserDummy.field(AppUserFields.Active), isEqualTo: false)
         .orderBy(
           AppUserDummy.field(AppUserFields.CreatedDate),

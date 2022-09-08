@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
 import 'package:revup_core/core.dart';
 
 mixin AppUserMixin {
+  @protected
   Future<bool> isUserPermissible(
     IStore<AppUser> iau,
     String uid,
@@ -10,19 +12,29 @@ mixin AppUserMixin {
       (await iau.get(uid))
           .fold((l) => false, (r) async => _isUserFreeOfViolation(r));
 
-  Future<bool> banUser(AppUser r, IStore<AppUser> iau, String uid) async =>
-      await r.map(
-        consumer: (c) async => _auxConsumer(iau, uid, ban: true),
-        provider: (p) async => _auxProvider(iau, uid, ban: true),
-        admin: (_) => false,
-      );
+  @protected
+  Future<bool> banUser(IStore<AppUser> iau, String uid) async =>
+      (await iau.get(uid))
+          .map<Future<bool>>(
+            (r) async => r.map(
+              consumer: (c) async => _auxConsumer(iau, uid, ban: true),
+              provider: (p) async => _auxProvider(iau, uid, ban: true),
+              admin: (_) => false,
+            ),
+          )
+          .getOrElse(() async => false);
 
+  @protected
   Future<bool> unBanUser(AppUser r, IStore<AppUser> iau, String uid) async =>
-      await r.map(
-        consumer: (c) async => _auxConsumer(iau, uid, ban: true),
-        provider: (p) async => _auxProvider(iau, uid, ban: true),
-        admin: (_) => false,
-      );
+      (await iau.get(uid))
+          .map<Future<bool>>(
+            (r) async => r.map(
+              consumer: (c) async => _auxConsumer(iau, uid, ban: false),
+              provider: (p) async => _auxProvider(iau, uid, ban: false),
+              admin: (_) => false,
+            ),
+          )
+          .getOrElse(() async => false);
 
   bool _isUserFreeOfViolation(AppUser r) => r.map(
         consumer: (c) =>
@@ -32,7 +44,7 @@ mixin AppUserMixin {
                     .compareTo(DateTime.now()) <
                 0,
         provider: (p) =>
-            p.active && p.inactiveTo != null ||
+            p.inactiveTo == null ||
             (p.inactiveTo ?? DateTime.now()).compareTo(DateTime.now()) < 0,
         admin: (_) => false,
       );
@@ -62,28 +74,21 @@ mixin AppUserMixin {
         ban
             ? _auxCreateProviderBanStatus(uid)
             : _auxCreateProviderUnBanStatus(uid),
-        ilist([
-          AppUserDummy.field(AppUserFields.Active),
-          AppUserDummy.field(AppUserFields.ProviderInactiveTo),
-        ]),
+        cons(AppUserDummy.field(AppUserFields.ProviderInactiveTo), nil()),
       ))
           .fold((l) => false, (r) => true);
 
   AppUser _auxCreateProviderBanStatus(String uid) =>
-      AppUserDummy.dummyConsumer(uid).maybeMap(
+      AppUserDummy.dummyProvider(uid).maybeMap(
         provider: (p) => p.copyWith(
           inactiveTo: DateTime.now().add(const Duration(days: 7)),
-          active: false,
         ),
         orElse: () => throw NullThrownError(),
       );
 
   AppUser _auxCreateProviderUnBanStatus(String uid) =>
-      AppUserDummy.dummyConsumer(uid).maybeMap(
-        provider: (p) => p.copyWith(
-          inactiveTo: null,
-          active: true,
-        ),
+      AppUserDummy.dummyProvider(uid).maybeMap(
+        provider: (p) => p.copyWith(inactiveTo: null),
         orElse: () => throw NullThrownError(),
       );
 
