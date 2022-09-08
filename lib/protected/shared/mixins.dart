@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:dartz/dartz.dart';
+
 import 'package:flutter/widgets.dart';
+
+import 'package:dartz/dartz.dart';
 import 'package:revup_core/core.dart';
 
 mixin AppUserMixin {
@@ -25,7 +27,7 @@ mixin AppUserMixin {
           .getOrElse(() async => false);
 
   @protected
-  Future<bool> unBanUser(AppUser r, IStore<AppUser> iau, String uid) async =>
+  Future<bool> unBanUser(IStore<AppUser> iau, String uid) async =>
       (await iau.get(uid))
           .map<Future<bool>>(
             (r) async => r.map(

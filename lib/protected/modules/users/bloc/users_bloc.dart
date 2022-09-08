@@ -15,6 +15,43 @@ part 'users_bloc.freezed.dart';
 
 class UsersBloc extends Bloc<UsersEvent, UsersState> with AppUserMixin {
   UsersBloc(this._iau) : super(const _Loading()) {
+    reset();
+    on<UsersEvent>(
+      (event, emit) => event.map(
+        searched: (event) async {
+          emit(const UsersState.loading());
+          await Future<void>.delayed(const Duration(milliseconds: 500));
+          return _dataset?.hasValue ?? false
+              ? emit(
+                  UsersState.populated(
+                    _dataset!.value
+                        .filter(
+                          (a) => '${a.firstName} ${a.lastName}'
+                              .toLowerCase()
+                              .contains(event.term.trim().toLowerCase()),
+                        )
+                        .toList(),
+                    event.term,
+                  ),
+                )
+              : _dataset?.hasError ?? true
+                  ? emit(const UsersState.error())
+                  : emit(UsersState.empty(event.term));
+        },
+        failed: (_) => emit(const UsersState.error()),
+      ),
+      transformer: restartable(),
+    );
+  }
+
+  final IStore<AppUser> _iau;
+  BehaviorSubject<IList<AppUser>>? _dataset;
+  StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? _rawStream;
+
+  Future<Unit> reset() async {
+    await _dataset?.close();
+    await _rawStream?.cancel();
+
     _dataset = BehaviorSubject<IList<AppUser>>();
 
     _rawStream = _iau
@@ -24,7 +61,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> with AppUserMixin {
         .snapshots()
         .listen(
           (data) {
-            _dataset.add(
+            _dataset!.add(
               data.docs
                   .map(_iau.parseRawData)
                   .fold<IList<AppUser>>(
@@ -43,42 +80,18 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> with AppUserMixin {
           onError: (dynamic _) => add(const UsersEvent.failed()),
         );
 
-    on<UsersEvent>(
-      (event, emit) => event.map(
-        searched: (event) async {
-          emit(const UsersState.loading());
-          await Future<void>.delayed(const Duration(milliseconds: 500));
-          return _dataset.hasValue
-              ? emit(
-                  UsersState.populated(
-                    _dataset.value
-                        .filter(
-                          (a) => '${a.firstName} ${a.lastName}'
-                              .toLowerCase()
-                              .contains(event.term.trim().toLowerCase()),
-                        )
-                        .toList(),
-                    event.term,
-                  ),
-                )
-              : _dataset.hasError
-                  ? emit(const UsersState.error())
-                  : emit(UsersState.empty(event.term));
-        },
-        failed: (_) => emit(const UsersState.error()),
-      ),
-      transformer: restartable(),
-    );
+    return unit;
   }
 
-  final IStore<AppUser> _iau;
-  late BehaviorSubject<IList<AppUser>> _dataset;
-  late StreamSubscription<QuerySnapshot<Map<String, dynamic>>> _rawStream;
+  Future<bool> ban(String uid) => banUser(_iau, uid);
+
+  Future<bool> unBan(String uid) => unBanUser(_iau, uid);
 
   @override
   Future<void> close() async {
-    await _dataset.close();
-    await _rawStream.cancel();
+    await _dataset?.close();
+    await _rawStream?.cancel();
+
     return super.close();
   }
 }
