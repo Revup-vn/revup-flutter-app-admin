@@ -20,18 +20,21 @@ mixin _$UsersEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String term) searched,
     required TResult Function() failed,
+    required TResult Function(Tuple2<FilterCriteria, bool> s) changeCriteria,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String term)? searched,
     TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String term)? searched,
     TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$UsersEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Searched value) searched,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_ChangeCriteria value) changeCriteria,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Searched value)? searched,
     TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Searched value)? searched,
     TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,6 +144,7 @@ class _$_Searched implements _Searched {
   TResult when<TResult extends Object?>({
     required TResult Function(String term) searched,
     required TResult Function() failed,
+    required TResult Function(Tuple2<FilterCriteria, bool> s) changeCriteria,
   }) {
     return searched(term);
   }
@@ -147,6 +154,7 @@ class _$_Searched implements _Searched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String term)? searched,
     TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
   }) {
     return searched?.call(term);
   }
@@ -156,6 +164,7 @@ class _$_Searched implements _Searched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String term)? searched,
     TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
     required TResult orElse(),
   }) {
     if (searched != null) {
@@ -169,6 +178,7 @@ class _$_Searched implements _Searched {
   TResult map<TResult extends Object?>({
     required TResult Function(_Searched value) searched,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_ChangeCriteria value) changeCriteria,
   }) {
     return searched(this);
   }
@@ -178,6 +188,7 @@ class _$_Searched implements _Searched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Searched value)? searched,
     TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
   }) {
     return searched?.call(this);
   }
@@ -187,6 +198,7 @@ class _$_Searched implements _Searched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Searched value)? searched,
     TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
     required TResult orElse(),
   }) {
     if (searched != null) {
@@ -245,6 +257,7 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function(String term) searched,
     required TResult Function() failed,
+    required TResult Function(Tuple2<FilterCriteria, bool> s) changeCriteria,
   }) {
     return failed();
   }
@@ -254,6 +267,7 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String term)? searched,
     TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
   }) {
     return failed?.call();
   }
@@ -263,6 +277,7 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String term)? searched,
     TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -276,6 +291,7 @@ class _$_Failed implements _Failed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Searched value) searched,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_ChangeCriteria value) changeCriteria,
   }) {
     return failed(this);
   }
@@ -285,6 +301,7 @@ class _$_Failed implements _Failed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Searched value)? searched,
     TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
   }) {
     return failed?.call(this);
   }
@@ -294,6 +311,7 @@ class _$_Failed implements _Failed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Searched value)? searched,
     TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -308,29 +326,179 @@ abstract class _Failed implements UsersEvent {
 }
 
 /// @nodoc
-mixin _$UsersState {
+abstract class _$$_ChangeCriteriaCopyWith<$Res> {
+  factory _$$_ChangeCriteriaCopyWith(
+          _$_ChangeCriteria value, $Res Function(_$_ChangeCriteria) then) =
+      __$$_ChangeCriteriaCopyWithImpl<$Res>;
+  $Res call({Tuple2<FilterCriteria, bool> s});
+}
+
+/// @nodoc
+class __$$_ChangeCriteriaCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res>
+    implements _$$_ChangeCriteriaCopyWith<$Res> {
+  __$$_ChangeCriteriaCopyWithImpl(
+      _$_ChangeCriteria _value, $Res Function(_$_ChangeCriteria) _then)
+      : super(_value, (v) => _then(v as _$_ChangeCriteria));
+
+  @override
+  _$_ChangeCriteria get _value => super._value as _$_ChangeCriteria;
+
+  @override
+  $Res call({
+    Object? s = freezed,
+  }) {
+    return _then(_$_ChangeCriteria(
+      s == freezed
+          ? _value.s
+          : s // ignore: cast_nullable_to_non_nullable
+              as Tuple2<FilterCriteria, bool>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeCriteria implements _ChangeCriteria {
+  const _$_ChangeCriteria(this.s);
+
+  @override
+  final Tuple2<FilterCriteria, bool> s;
+
+  @override
+  String toString() {
+    return 'UsersEvent.changeCriteria(s: $s)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ChangeCriteria &&
+            const DeepCollectionEquality().equals(other.s, s));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(s));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ChangeCriteriaCopyWith<_$_ChangeCriteria> get copyWith =>
+      __$$_ChangeCriteriaCopyWithImpl<_$_ChangeCriteria>(this, _$identity);
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String term) empty,
-    required TResult Function() loading,
-    required TResult Function() error,
-    required TResult Function(List<AppUser> users, String term) populated,
+    required TResult Function(String term) searched,
+    required TResult Function() failed,
+    required TResult Function(Tuple2<FilterCriteria, bool> s) changeCriteria,
+  }) {
+    return changeCriteria(s);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String term)? searched,
+    TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
+  }) {
+    return changeCriteria?.call(s);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String term)? searched,
+    TResult Function()? failed,
+    TResult Function(Tuple2<FilterCriteria, bool> s)? changeCriteria,
+    required TResult orElse(),
+  }) {
+    if (changeCriteria != null) {
+      return changeCriteria(s);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Searched value) searched,
+    required TResult Function(_Failed value) failed,
+    required TResult Function(_ChangeCriteria value) changeCriteria,
+  }) {
+    return changeCriteria(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Searched value)? searched,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
+  }) {
+    return changeCriteria?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Searched value)? searched,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_ChangeCriteria value)? changeCriteria,
+    required TResult orElse(),
+  }) {
+    if (changeCriteria != null) {
+      return changeCriteria(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeCriteria implements UsersEvent {
+  const factory _ChangeCriteria(final Tuple2<FilterCriteria, bool> s) =
+      _$_ChangeCriteria;
+
+  Tuple2<FilterCriteria, bool> get s;
+  @JsonKey(ignore: true)
+  _$$_ChangeCriteriaCopyWith<_$_ChangeCriteria> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UsersState {
+  IMap<FilterCriteria, bool> get criterion =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String term, IMap<FilterCriteria, bool> criterion)
+        empty,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) loading,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) error,
+    required TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)
+        populated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -359,6 +527,10 @@ mixin _$UsersState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UsersStateCopyWith<UsersState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -366,6 +538,7 @@ abstract class $UsersStateCopyWith<$Res> {
   factory $UsersStateCopyWith(
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res>;
+  $Res call({IMap<FilterCriteria, bool> criterion});
 }
 
 /// @nodoc
@@ -375,13 +548,26 @@ class _$UsersStateCopyWithImpl<$Res> implements $UsersStateCopyWith<$Res> {
   final UsersState _value;
   // ignore: unused_field
   final $Res Function(UsersState) _then;
+
+  @override
+  $Res call({
+    Object? criterion = freezed,
+  }) {
+    return _then(_value.copyWith(
+      criterion: criterion == freezed
+          ? _value.criterion
+          : criterion // ignore: cast_nullable_to_non_nullable
+              as IMap<FilterCriteria, bool>,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_EmptyCopyWith<$Res> {
+abstract class _$$_EmptyCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
   factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) =
       __$$_EmptyCopyWithImpl<$Res>;
-  $Res call({String term});
+  @override
+  $Res call({String term, IMap<FilterCriteria, bool> criterion});
 }
 
 /// @nodoc
@@ -396,12 +582,17 @@ class __$$_EmptyCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? term = freezed,
+    Object? criterion = freezed,
   }) {
     return _then(_$_Empty(
       term == freezed
           ? _value.term
           : term // ignore: cast_nullable_to_non_nullable
               as String,
+      criterion == freezed
+          ? _value.criterion
+          : criterion // ignore: cast_nullable_to_non_nullable
+              as IMap<FilterCriteria, bool>,
     ));
   }
 }
@@ -409,14 +600,16 @@ class __$$_EmptyCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Empty implements _Empty {
-  const _$_Empty(this.term);
+  const _$_Empty(this.term, this.criterion);
 
   @override
   final String term;
+  @override
+  final IMap<FilterCriteria, bool> criterion;
 
   @override
   String toString() {
-    return 'UsersState.empty(term: $term)';
+    return 'UsersState.empty(term: $term, criterion: $criterion)';
   }
 
   @override
@@ -424,12 +617,15 @@ class _$_Empty implements _Empty {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Empty &&
-            const DeepCollectionEquality().equals(other.term, term));
+            const DeepCollectionEquality().equals(other.term, term) &&
+            const DeepCollectionEquality().equals(other.criterion, criterion));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(term));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(term),
+      const DeepCollectionEquality().hash(criterion));
 
   @JsonKey(ignore: true)
   @override
@@ -439,36 +635,43 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String term) empty,
-    required TResult Function() loading,
-    required TResult Function() error,
-    required TResult Function(List<AppUser> users, String term) populated,
+    required TResult Function(String term, IMap<FilterCriteria, bool> criterion)
+        empty,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) loading,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) error,
+    required TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)
+        populated,
   }) {
-    return empty(term);
+    return empty(term, criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
   }) {
-    return empty?.call(term);
+    return empty?.call(term, criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty(term);
+      return empty(term, criterion);
     }
     return orElse();
   }
@@ -512,19 +715,25 @@ class _$_Empty implements _Empty {
 }
 
 abstract class _Empty implements UsersState {
-  const factory _Empty(final String term) = _$_Empty;
+  const factory _Empty(
+      final String term, final IMap<FilterCriteria, bool> criterion) = _$_Empty;
 
   String get term;
+  @override
+  IMap<FilterCriteria, bool> get criterion;
+  @override
   @JsonKey(ignore: true)
   _$$_EmptyCopyWith<_$_Empty> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
+abstract class _$$_LoadingCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
   factory _$$_LoadingCopyWith(
           _$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({IMap<FilterCriteria, bool> criterion});
 }
 
 /// @nodoc
@@ -535,60 +744,90 @@ class __$$_LoadingCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
 
   @override
   _$_Loading get _value => super._value as _$_Loading;
+
+  @override
+  $Res call({
+    Object? criterion = freezed,
+  }) {
+    return _then(_$_Loading(
+      criterion == freezed
+          ? _value.criterion
+          : criterion // ignore: cast_nullable_to_non_nullable
+              as IMap<FilterCriteria, bool>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Loading implements _Loading {
-  const _$_Loading();
+  const _$_Loading(this.criterion);
+
+  @override
+  final IMap<FilterCriteria, bool> criterion;
 
   @override
   String toString() {
-    return 'UsersState.loading()';
+    return 'UsersState.loading(criterion: $criterion)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType &&
+            other is _$_Loading &&
+            const DeepCollectionEquality().equals(other.criterion, criterion));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(criterion));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+      __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String term) empty,
-    required TResult Function() loading,
-    required TResult Function() error,
-    required TResult Function(List<AppUser> users, String term) populated,
+    required TResult Function(String term, IMap<FilterCriteria, bool> criterion)
+        empty,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) loading,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) error,
+    required TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)
+        populated,
   }) {
-    return loading();
+    return loading(criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
   }) {
-    return loading?.call();
+    return loading?.call(criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(criterion);
     }
     return orElse();
   }
@@ -632,13 +871,23 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements UsersState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading(final IMap<FilterCriteria, bool> criterion) =
+      _$_Loading;
+
+  @override
+  IMap<FilterCriteria, bool> get criterion;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
+abstract class _$$_ErrorCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({IMap<FilterCriteria, bool> criterion});
 }
 
 /// @nodoc
@@ -649,60 +898,90 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
 
   @override
   _$_Error get _value => super._value as _$_Error;
+
+  @override
+  $Res call({
+    Object? criterion = freezed,
+  }) {
+    return _then(_$_Error(
+      criterion == freezed
+          ? _value.criterion
+          : criterion // ignore: cast_nullable_to_non_nullable
+              as IMap<FilterCriteria, bool>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error();
+  const _$_Error(this.criterion);
+
+  @override
+  final IMap<FilterCriteria, bool> criterion;
 
   @override
   String toString() {
-    return 'UsersState.error()';
+    return 'UsersState.error(criterion: $criterion)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            const DeepCollectionEquality().equals(other.criterion, criterion));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(criterion));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String term) empty,
-    required TResult Function() loading,
-    required TResult Function() error,
-    required TResult Function(List<AppUser> users, String term) populated,
+    required TResult Function(String term, IMap<FilterCriteria, bool> criterion)
+        empty,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) loading,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) error,
+    required TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)
+        populated,
   }) {
-    return error();
+    return error(criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
   }) {
-    return error?.call();
+    return error?.call(criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(criterion);
     }
     return orElse();
   }
@@ -746,15 +1025,25 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements UsersState {
-  const factory _Error() = _$_Error;
+  const factory _Error(final IMap<FilterCriteria, bool> criterion) = _$_Error;
+
+  @override
+  IMap<FilterCriteria, bool> get criterion;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PopulatedCopyWith<$Res> {
+abstract class _$$_PopulatedCopyWith<$Res>
+    implements $UsersStateCopyWith<$Res> {
   factory _$$_PopulatedCopyWith(
           _$_Populated value, $Res Function(_$_Populated) then) =
       __$$_PopulatedCopyWithImpl<$Res>;
-  $Res call({List<AppUser> users, String term});
+  @override
+  $Res call(
+      {List<AppUser> users, String term, IMap<FilterCriteria, bool> criterion});
 }
 
 /// @nodoc
@@ -771,6 +1060,7 @@ class __$$_PopulatedCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
   $Res call({
     Object? users = freezed,
     Object? term = freezed,
+    Object? criterion = freezed,
   }) {
     return _then(_$_Populated(
       users == freezed
@@ -781,6 +1071,10 @@ class __$$_PopulatedCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
           ? _value.term
           : term // ignore: cast_nullable_to_non_nullable
               as String,
+      criterion == freezed
+          ? _value.criterion
+          : criterion // ignore: cast_nullable_to_non_nullable
+              as IMap<FilterCriteria, bool>,
     ));
   }
 }
@@ -788,7 +1082,8 @@ class __$$_PopulatedCopyWithImpl<$Res> extends _$UsersStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Populated implements _Populated {
-  const _$_Populated(final List<AppUser> users, this.term) : _users = users;
+  const _$_Populated(final List<AppUser> users, this.term, this.criterion)
+      : _users = users;
 
   final List<AppUser> _users;
   @override
@@ -799,10 +1094,12 @@ class _$_Populated implements _Populated {
 
   @override
   final String term;
+  @override
+  final IMap<FilterCriteria, bool> criterion;
 
   @override
   String toString() {
-    return 'UsersState.populated(users: $users, term: $term)';
+    return 'UsersState.populated(users: $users, term: $term, criterion: $criterion)';
   }
 
   @override
@@ -811,14 +1108,16 @@ class _$_Populated implements _Populated {
         (other.runtimeType == runtimeType &&
             other is _$_Populated &&
             const DeepCollectionEquality().equals(other._users, _users) &&
-            const DeepCollectionEquality().equals(other.term, term));
+            const DeepCollectionEquality().equals(other.term, term) &&
+            const DeepCollectionEquality().equals(other.criterion, criterion));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_users),
-      const DeepCollectionEquality().hash(term));
+      const DeepCollectionEquality().hash(term),
+      const DeepCollectionEquality().hash(criterion));
 
   @JsonKey(ignore: true)
   @override
@@ -828,36 +1127,43 @@ class _$_Populated implements _Populated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String term) empty,
-    required TResult Function() loading,
-    required TResult Function() error,
-    required TResult Function(List<AppUser> users, String term) populated,
+    required TResult Function(String term, IMap<FilterCriteria, bool> criterion)
+        empty,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) loading,
+    required TResult Function(IMap<FilterCriteria, bool> criterion) error,
+    required TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)
+        populated,
   }) {
-    return populated(users, term);
+    return populated(users, term, criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
   }) {
-    return populated?.call(users, term);
+    return populated?.call(users, term, criterion);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String term)? empty,
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<AppUser> users, String term)? populated,
+    TResult Function(String term, IMap<FilterCriteria, bool> criterion)? empty,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? loading,
+    TResult Function(IMap<FilterCriteria, bool> criterion)? error,
+    TResult Function(List<AppUser> users, String term,
+            IMap<FilterCriteria, bool> criterion)?
+        populated,
     required TResult orElse(),
   }) {
     if (populated != null) {
-      return populated(users, term);
+      return populated(users, term, criterion);
     }
     return orElse();
   }
@@ -901,11 +1207,14 @@ class _$_Populated implements _Populated {
 }
 
 abstract class _Populated implements UsersState {
-  const factory _Populated(final List<AppUser> users, final String term) =
-      _$_Populated;
+  const factory _Populated(final List<AppUser> users, final String term,
+      final IMap<FilterCriteria, bool> criterion) = _$_Populated;
 
   List<AppUser> get users;
   String get term;
+  @override
+  IMap<FilterCriteria, bool> get criterion;
+  @override
   @JsonKey(ignore: true)
   _$$_PopulatedCopyWith<_$_Populated> get copyWith =>
       throw _privateConstructorUsedError;

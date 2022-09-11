@@ -14,34 +14,97 @@ part 'users_state.dart';
 part 'users_bloc.freezed.dart';
 
 class UsersBloc extends Bloc<UsersEvent, UsersState> with AppUserMixin {
-  UsersBloc(this._iau) : super(const _Loading()) {
+  UsersBloc(this._iau)
+      : super(
+          _Loading(
+            IMap.empty(
+              orderBy<FilterCriteria, int>(
+                IntOrder,
+                (a) => a.index,
+              ),
+            ),
+          ),
+        ) {
     reset();
     on<UsersEvent>(
       (event, emit) => event.map(
         searched: (event) async {
-          emit(const UsersState.loading());
+          emit(UsersState.loading(state.criterion));
           await Future<void>.delayed(const Duration(milliseconds: 500));
           return _dataset?.hasValue ?? false
-              ? emit(
-                  UsersState.populated(
-                    _dataset!.value
-                        .filter(
-                          (a) => '${a.firstName} ${a.lastName}'
-                              .toLowerCase()
-                              .contains(event.term.trim().toLowerCase()),
-                        )
-                        .toList(),
-                    event.term,
-                  ),
-                )
+              ? emit(_auxFilteredState(event.term))
               : _dataset?.hasError ?? true
-                  ? emit(const UsersState.error())
-                  : emit(UsersState.empty(event.term));
+                  ? emit(UsersState.error(state.criterion))
+                  : emit(UsersState.empty(event.term, state.criterion));
         },
-        failed: (_) => emit(const UsersState.error()),
+        failed: (_) => emit(UsersState.error(state.criterion)),
+        changeCriteria: (v) {
+          emit(
+            state.copyWith(
+              criterion: state.criterion.put(v.s.head, v.s.tail),
+            ),
+          );
+          return add(
+            UsersEvent.searched(
+              state.maybeMap(
+                orElse: () => '',
+                empty: (s) => s.term,
+                populated: (s) => s.term,
+              ),
+            ),
+          );
+        },
       ),
       transformer: restartable(),
     );
+  }
+
+  UsersState _auxFilteredState(String term) {
+    final res = _auxFilteredResult(
+      _dataset!.value.filter(
+        (a) => '${a.firstName} ${a.lastName}'
+            .toLowerCase()
+            .contains(term.trim().toLowerCase()),
+      ),
+    );
+
+    return res.isEmpty
+        ? UsersState.empty(term, state.criterion)
+        : UsersState.populated(res, term, state.criterion);
+  }
+
+  List<AppUser> _auxFilteredResult(IList<AppUser> tmp) {
+    final banc =
+        state.criterion.get(FilterCriteria.Banned).getOrElse(() => false);
+    final activec =
+        state.criterion.get(FilterCriteria.Active).getOrElse(() => false);
+
+    return banc ^ activec
+        ? banc
+            ? _auxFilteredConsumerVsProvider(
+                tmp.filter((a) => !isUserFreeOfViolation(a)),
+              )
+            : _auxFilteredConsumerVsProvider(tmp.filter(isUserFreeOfViolation))
+        : _auxFilteredConsumerVsProvider(tmp);
+  }
+
+  List<AppUser> _auxFilteredConsumerVsProvider(IList<AppUser> tmp) {
+    final providerc =
+        state.criterion.get(FilterCriteria.Provider).getOrElse(() => false);
+    final consumserc =
+        state.criterion.get(FilterCriteria.Consumer).getOrElse(() => false);
+
+    return providerc ^ consumserc
+        ? providerc
+            ? tmp
+                .filter((a) =>
+                    a.maybeMap(orElse: () => false, provider: (_) => true))
+                .toList()
+            : tmp
+                .filter((a) =>
+                    a.maybeMap(orElse: () => false, consumer: (_) => true))
+                .toList()
+        : tmp.toList();
   }
 
   final IStore<AppUser> _iau;
@@ -94,4 +157,11 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> with AppUserMixin {
 
     return super.close();
   }
+}
+
+enum FilterCriteria {
+  Provider,
+  Consumer,
+  Active,
+  Banned,
 }

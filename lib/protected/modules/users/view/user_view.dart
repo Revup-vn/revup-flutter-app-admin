@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/users_bloc.dart';
@@ -20,6 +21,66 @@ class UsersView extends StatelessWidget {
             ),
             onChanged: (s) =>
                 context.read<UsersBloc>().add(UsersEvent.searched(s.trim())),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FilterChip(
+                  selected: context.select<UsersBloc, bool>(
+                    (v) => v.state.criterion
+                        .get(FilterCriteria.Provider)
+                        .getOrElse(() => false),
+                  ),
+                  label: const Text('Provider'),
+                  onSelected: (s) => context.read<UsersBloc>().add(
+                        UsersEvent.changeCriteria(
+                          tuple2(FilterCriteria.Provider, s),
+                        ),
+                      ),
+                ),
+                FilterChip(
+                  selected: context.select<UsersBloc, bool>(
+                    (v) => v.state.criterion
+                        .get(FilterCriteria.Consumer)
+                        .getOrElse(() => false),
+                  ),
+                  label: const Text('Consumer'),
+                  onSelected: (s) => context.read<UsersBloc>().add(
+                        UsersEvent.changeCriteria(
+                          tuple2(FilterCriteria.Consumer, s),
+                        ),
+                      ),
+                ),
+                FilterChip(
+                  selected: context.select<UsersBloc, bool>(
+                    (v) => v.state.criterion
+                        .get(FilterCriteria.Active)
+                        .getOrElse(() => false),
+                  ),
+                  label: const Text('Active'),
+                  onSelected: (s) => context.read<UsersBloc>().add(
+                        UsersEvent.changeCriteria(
+                          tuple2(FilterCriteria.Active, s),
+                        ),
+                      ),
+                ),
+                FilterChip(
+                  selected: context.select<UsersBloc, bool>(
+                    (v) => v.state.criterion
+                        .get(FilterCriteria.Banned)
+                        .getOrElse(() => false),
+                  ),
+                  label: const Text('Banned'),
+                  onSelected: (s) => context.read<UsersBloc>().add(
+                        UsersEvent.changeCriteria(
+                          tuple2(FilterCriteria.Banned, s),
+                        ),
+                      ),
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: context.watch<UsersBloc>().state.map(

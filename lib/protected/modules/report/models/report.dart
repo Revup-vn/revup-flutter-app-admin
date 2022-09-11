@@ -43,6 +43,9 @@ class Report with _$Report {
         pName: '${p.firstName} ${p.lastName}',
         pAddress: p.addr,
         amount: rec.money,
-        feedback: rec.mapOrNull(finished: (val) => val.feedback),
+        feedback: rec.maybeMap(
+          finished: (val) => val.feedback,
+          orElse: () => null,
+        ),
       );
 }
