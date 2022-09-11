@@ -337,6 +337,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.2"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.5"
   eventify:
     dependency: transitive
     description:
@@ -456,6 +463,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  fl_chart:
+    dependency: "direct main"
+    description:
+      name: fl_chart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.55.1"
   flash:
     dependency: "direct main"
     description:
@@ -880,10 +894,12 @@ packages:
   revup_core:
     dependency: "direct main"
     description:
-      path: "packages/injected/revup-dev"
-      relative: true
-    source: path
-    version: "6.3.10-dev"
+      path: "."
+      ref: main
+      resolved-ref: "3f12119946b5fe65bb316e76fbf7aa68252f72c3"
+      url: "https://github.com/Revup-vn/revup-core.git"
+    source: git
+    version: "6.3.10-dev+1"
   rxdart:
     dependency: "direct main"
     description:
