@@ -11,6 +11,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) => AutoTabsScaffold(
         routes: const [
           AccountRoute(),
+          DashboardRoute(),
           ProviderVerificationRouter(),
           UsersRoute(),
           ReportRouter(),
@@ -28,6 +29,11 @@ class HomeView extends StatelessWidget {
                     icon: Icon(Icons.person_outline),
                     selectedIcon: Icon(Icons.person),
                     label: Text('Account'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.admin_panel_settings_outlined),
+                    selectedIcon: Icon(Icons.admin_panel_settings),
+                    label: Text('Dashboard'),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.check_circle_outline),
