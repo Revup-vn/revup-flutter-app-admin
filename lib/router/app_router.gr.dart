@@ -11,10 +11,12 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:auto_route/empty_router_widgets.dart' as _i1;
+
 import 'package:flutter/cupertino.dart' as _i8;
 import 'package:flutter/material.dart' as _i6;
+
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:auto_route/empty_router_widgets.dart' as _i1;
 
 import '../init/init.dart' as _i2;
 import '../login/login.dart' as _i3;

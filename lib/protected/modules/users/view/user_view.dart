@@ -24,8 +24,10 @@ class UsersView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: Wrap(
+              alignment: WrapAlignment.spaceAround,
+              runSpacing: 20,
+              spacing: 30,
               children: [
                 FilterChip(
                   selected: context.select<UsersBloc, bool>(

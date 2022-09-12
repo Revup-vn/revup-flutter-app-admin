@@ -1,22 +1,23 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-const Map<int, List<double>> activeUsersData = <int, List<double>>{
-  1: [200, 310],
-  2: [305, 450],
-  3: [270, 390],
-  4: [210, 310],
-  5: [100, 160],
-  6: [300, 450],
-  7: [210, 310],
-  8: [150, 210],
-  9: [210, 310],
-  10: [210, 308],
-};
+import 'package:fl_chart/fl_chart.dart';
+
+// const Map<int, List<double>> activeUsersData = <int, List<double>>{
+//   1: [200, 310],
+//   2: [305, 450],
+//   3: [270, 390],
+//   4: [210, 310],
+//   5: [100, 160],
+//   6: [300, 450],
+//   7: [210, 310],
+//   8: [150, 210],
+//   9: [210, 310],
+//   10: [210, 308],
+// };
 
 class ActiveUsersCell extends StatelessWidget {
-  const ActiveUsersCell({super.key});
+  const ActiveUsersCell({super.key, required this.data});
+  final Map<int, List<double>> data;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class ActiveUsersCell extends StatelessWidget {
                   'Active Users',
                 ),
                 const SizedBox(height: 24),
-                const _BarChart(),
+                _BarChart(data),
                 const SizedBox(height: 20),
                 Row(
                   children: <Widget>[
@@ -56,11 +57,11 @@ class ActiveUsersCell extends StatelessWidget {
               ],
             ),
           ),
-          const _DetailsColumn(
-            daily: 23,
-            monthly: 233,
-            annual: 232323,
-          ),
+          // const _DetailsColumn(
+          //   daily: 23,
+          //   monthly: 233,
+          //   annual: 232323,
+          // ),
         ],
       ),
     );
@@ -68,7 +69,8 @@ class ActiveUsersCell extends StatelessWidget {
 }
 
 class _BarChart extends StatelessWidget {
-  const _BarChart({super.key});
+  const _BarChart(this.activeUsersData);
+  final Map<int, List<double>> activeUsersData;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class _BarChart extends StatelessWidget {
       constraints: const BoxConstraints(maxHeight: 191, maxWidth: 366),
       child: BarChart(
         BarChartData(
-          maxY: 500,
+          maxY: 15,
           alignment: BarChartAlignment.center,
           barTouchData: BarTouchData(enabled: false),
           titlesData: FlTitlesData(
@@ -149,84 +151,83 @@ class _BarChart extends StatelessWidget {
   }
 }
 
-class _DetailsColumn extends StatelessWidget {
-  const _DetailsColumn({
-    required this.annual,
-    required this.monthly,
-    required this.daily,
-  });
+// class _DetailsColumn extends StatelessWidget {
+//   const _DetailsColumn({
+//     required this.annual,
+//     required this.monthly,
+//     required this.daily,
+//   });
 
-  final int annual;
+//   final int annual;
 
-  final int monthly;
+//   final int monthly;
 
-  final int daily;
+//   final int daily;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 92,
-      height: 301,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const _NumberAndTitle(
-            title: 'Annual',
-            number: 232323,
-          ),
-          Divider(color: Theme.of(context).colorScheme.surfaceTint),
-          const _NumberAndTitle(
-            title: 'Mounthly',
-            number: 233,
-          ),
-          Divider(color: Theme.of(context).colorScheme.surfaceTint),
-          const _NumberAndTitle(
-            title: 'Daily',
-            number: 23,
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: 92,
+//       height: 301,
+//       decoration: BoxDecoration(
+//         color: Theme.of(context).colorScheme.surfaceVariant,
+//         borderRadius: BorderRadius.circular(6),
+//       ),
+//       padding: const EdgeInsets.symmetric(vertical: 15),
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         mainAxisSize: MainAxisSize.min,
+//         children: <Widget>[
+//           const _NumberAndTitle(
+//             title: 'Annual',
+//             number: 232323,
+//           ),
+//           Divider(color: Theme.of(context).colorScheme.surfaceTint),
+//           const _NumberAndTitle(
+//             title: 'Mounthly',
+//             number: 233,
+//           ),
+//           Divider(color: Theme.of(context).colorScheme.surfaceTint),
+//           const _NumberAndTitle(
+//             title: 'Daily',
+//             number: 23,
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class _NumberAndTitle extends StatelessWidget {
-  const _NumberAndTitle({
-    required this.title,
-    required this.number,
-    super.key,
-  });
+// class _NumberAndTitle extends StatelessWidget {
+//   const _NumberAndTitle({
+//     required this.title,
+//     required this.number,
+//   });
 
-  final String title;
+//   final String title;
 
-  final int number;
+//   final int number;
 
-  String _formatNumber(int number) {
-    if (number.toString().length >= 10) {
-      return NumberFormat.compact().format(number);
-    } else {
-      return NumberFormat.decimalPattern().format(number).replaceAll(',', ' ');
-    }
-  }
+//   String _formatNumber(int number) {
+//     if (number.toString().length >= 10) {
+//       return NumberFormat.compact().format(number);
+//     } else {
+//       return NumberFormat.decimalPattern().format(number).replaceAll(',', ' ');
+//     }
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Text(_formatNumber(number)),
-        const SizedBox(height: 7.6),
-        Text(title),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       mainAxisSize: MainAxisSize.min,
+//       children: <Widget>[
+//         Text(_formatNumber(number)),
+//         const SizedBox(height: 7.6),
+//         Text(title),
+//       ],
+//     );
+//   }
+// }
 
 class NameAndColorRow extends StatelessWidget {
   const NameAndColorRow({
