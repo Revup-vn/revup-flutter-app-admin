@@ -882,10 +882,10 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "1effec7df0cca4dd47753b4fd8b77aa1aae46216"
+      resolved-ref: "3f12119946b5fe65bb316e76fbf7aa68252f72c3"
       url: "https://github.com/Revup-vn/revup-core.git"
     source: git
-    version: "6.3.10-dev"
+    version: "6.3.10-dev+1"
   rxdart:
     dependency: "direct main"
     description:
